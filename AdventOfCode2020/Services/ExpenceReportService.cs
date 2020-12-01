@@ -12,12 +12,14 @@ namespace AdventOfCode2020.Services
         {
             _expenceReport = expenceReport ?? throw new ArgumentNullException(nameof(expenceReport));
 
-            if (ValidateExpenceReport(_expenceReport) == false)
-                throw new ArgumentException(nameof(expenceReport));
+            
         }
 
         public int Find2NumbersThatAddUpTo2020AndMultiplyTogether()
         {
+            if (ValidateExpenceReport(_expenceReport) == false)
+                throw new InvalidOperationException("'expence report' has is in an invalid state to meke this calculation.");
+
             throw new NotImplementedException();
         }
 

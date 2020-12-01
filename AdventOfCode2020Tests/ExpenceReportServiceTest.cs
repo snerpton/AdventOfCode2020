@@ -19,8 +19,9 @@ namespace AdventOfCode2020Tests
         public void Should_ThrowException_When_ExpenceReportEntriesAreNull()
         {
             var mockExpenceReport = new ExpenseReport() { Entries = null };
+            var sut = new ExpenceReportService(mockExpenceReport);
 
-            Assert.Throws<ArgumentException>(() => new ExpenceReportService(mockExpenceReport));
+            Assert.Throws<InvalidOperationException>(() => sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether());
         }
 
         [Test]
@@ -29,8 +30,9 @@ namespace AdventOfCode2020Tests
         public void Should_ThrowException_When_ExpenceReportNumberOfEntriesIsEmptyOrLessThan2(int[] expenceEntries)
         {
             var mockExpenceReport = new ExpenseReport() { Entries = expenceEntries };
+            var sut = new ExpenceReportService(mockExpenceReport);
 
-            Assert.Throws<ArgumentException>(() => new ExpenceReportService(mockExpenceReport));
+            Assert.Throws<InvalidOperationException>(() => sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether());
         }
     }
 }
