@@ -21,12 +21,13 @@ namespace AdventOfCode2020.Services
                     DoDay1();
                     break;
                 case AdventDayNumber.Day02:
-                    throw new ArgumentOutOfRangeException();
+                    DoDay2();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }   
         }
-        
+
         private void DoDay1()
         {
             var twoNumbersMultiplied = _expenseReportService.Find2NumbersThatAddUpTo2020AndMultiplyTogether();
@@ -34,6 +35,11 @@ namespace AdventOfCode2020.Services
 
             var threeNumbersMultiplied = _expenseReportService.Find3NumbersThatAddUpTo2020AndMultiplyTogether();
             Console.WriteLine($"Day 1 part 2: sum three numbers equal to 2020, and when multiplied = {threeNumbersMultiplied}");
+        }
+        
+        private void DoDay2()
+        {
+            throw new NotImplementedException();
         }
     }
 }

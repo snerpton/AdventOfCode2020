@@ -45,4 +45,4 @@ More information about Advent of Code can be found at https://adventofcode.com/2
   
   where the row is made up of a password policy and password delimited my a `:` character. A policy of `1-3 a` indicates `a` must be used 1-3 times in the password. The first and last passwords are valid, but the second one isn't valid as `b` doesn't occur 1-3 times in `cdefg`.
   
-  
+ - Requirement: How many passwords are valid according to their policies?

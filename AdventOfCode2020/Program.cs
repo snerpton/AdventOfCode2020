@@ -8,7 +8,7 @@ namespace AdventOfCode2020
     class Program
     {
         private static ServiceProvider _serviceProvider;
-        private const AdventDayNumber DayNumber = Models.AdventDayNumber.Day01;
+        private const AdventDayNumber DayNumber = Models.AdventDayNumber.Day02;
 
         static void Main(string[] args)
         {
