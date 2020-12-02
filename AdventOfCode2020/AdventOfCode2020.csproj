@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <None Remove="Assets\PuzzleReportEntries.txt" />
-    <Content Include="Assets\PuzzleReportEntries.txt">
+    <Content Include="Assets\Day1PuzzleInputReportEntries.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

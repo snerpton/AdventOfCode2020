@@ -10,7 +10,7 @@ namespace AdventOfCode2020.Repositories
     {
         private static readonly string PuzzleReportPathAndFileName =
             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath) +
-            "/Assets/PuzzleReportEntries.txt";
+            "/Assets/Day1PuzzleInputReportEntries.txt";
 
         public IEnumerable<int> ReadFile()
         {
