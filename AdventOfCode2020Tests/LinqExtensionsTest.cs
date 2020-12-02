@@ -24,7 +24,6 @@ namespace AdventOfCode2020Tests
                 Assert.That(sut.Count(), Is.EqualTo(0));
             }
 
-
             /*
              * Number of combinations = n! / (k! (n-k)! )
              */
@@ -103,6 +102,18 @@ namespace AdventOfCode2020Tests
 
                 return true;
             }
+        }
+
+        public class GetCombinationsOfThreeNumbersTests
+        {
+            [Test]
+            public void Should_ReturnEmptyList_NullListPassedIn()
+            {
+                int[] collection = null;
+                var sut = collection.CombinationsOfThreeNumbersWithoutRepetition();
+
+                Assert.That(sut.Count(), Is.EqualTo(0));
+            } 
         }
     }
 }
