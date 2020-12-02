@@ -12,7 +12,6 @@ namespace AdventOfCode2020
         {
             // //setup our DI
             var serviceProvider = new ServiceCollection()
-                //.AddLogging(logging => logging.AddConsole())
                 .AddSingleton<IPuzzleReportEntriesRepository, PuzzleReportEntriesRepository>()
                 .AddSingleton<IExpenseReport, ExpenseReport>(s => new ExpenseReport(s.GetService<IPuzzleReportEntriesRepository>()))
                 .AddSingleton<IExpenseReportService, ExpenseReportService>()
@@ -20,8 +19,10 @@ namespace AdventOfCode2020
             
             var expenseReportService = serviceProvider.GetService<IExpenseReportService>();
             var twoNumbersMultiplied = expenseReportService.Find2NumbersThatAddUpTo2020AndMultiplyTogether();
+            Console.WriteLine($"Day 1 part 1: sum two numbers equal to 2020, and when multiplied = {twoNumbersMultiplied}"); 
             
-            Console.WriteLine($"Multiple of two numbers that when summed equal 2020, but when multiplied = {twoNumbersMultiplied}"); 
+            var threeNumbersMultiplied = expenseReportService.Find3NumbersThatAddUpTo2020AndMultiplyTogether();
+            Console.WriteLine($"Day 1 part 2: sum three numbers equal to 2020, and when multiplied = {threeNumbersMultiplied}");  
         }
     }
 }

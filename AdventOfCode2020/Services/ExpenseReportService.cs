@@ -30,6 +30,23 @@ namespace AdventOfCode2020.Services
 
             throw new Exception();
         }
+        
+        public int Find3NumbersThatAddUpTo2020AndMultiplyTogether()
+        {
+            const int targetNumberWhenAddedTogether = 2020;
+
+            if (ValidateExpenseReport(_expenseReport) == false)
+                throw new InvalidOperationException(
+                    "'expense report' has is in an invalid state to make this calculation.");
+
+            var expenseReportEntryCombinations = _expenseReport.Entries.CombinationsOfThreeNumbersWithoutRepetition();
+
+            foreach (var entryCombination in expenseReportEntryCombinations)
+                if (entryCombination.Sum() == targetNumberWhenAddedTogether)
+                    return entryCombination.Aggregate(1, (current, entry) => current * entry);
+
+            throw new Exception();
+        }
 
         private static bool ValidateExpenseReport(IExpenseReport expenseReport)
         {

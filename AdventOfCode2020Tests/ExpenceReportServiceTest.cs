@@ -62,5 +62,21 @@ namespace AdventOfCode2020Tests
 
             Assert.That(result, Is.EqualTo(expected));
         }
+        
+        [TestCase(new[] {2020, 0, 0}, 0)]
+        [TestCase(new[] {2019, 1, 0}, 0)]
+        [TestCase(new[] {1, 1, 2018}, 2018)]
+        [TestCase(new[] {1, 2, 2017,5}, 4034)]
+        [TestCase(new[] {1721, 979, 366, 299, 675, 1456}, 241861950)]
+        public void Should_Find3NumbersThatAddUpTo2020AndMultiplyTogether_WhenCombinationExists(
+            int[] expenseReportEntries, int expected)
+        {
+            var expenseReport = new ExpenseReport {Entries = expenseReportEntries};
+            var sut = new ExpenseReportService(expenseReport);
+
+            var result = sut.Find3NumbersThatAddUpTo2020AndMultiplyTogether();
+
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
