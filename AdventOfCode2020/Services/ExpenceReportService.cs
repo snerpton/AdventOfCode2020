@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Linq;
 using AdventOfCode2020.Models;
 
 namespace AdventOfCode2020.Services
 {
-
     public class ExpenseReportService
     {
         private readonly ExpenseReport _expenseReport;
@@ -17,25 +15,18 @@ namespace AdventOfCode2020.Services
 
         public int Find2NumbersThatAddUpTo2020AndMultiplyTogether()
         {
-            var targetNumberWhenAddedTogether = 2020;
+            const int targetNumberWhenAddedTogether = 2020;
 
             if (ValidateExpenseReport(_expenseReport) == false)
-                throw new InvalidOperationException("'expense report' has is in an invalid state to make this calculation.");
+                throw new InvalidOperationException(
+                    "'expense report' has is in an invalid state to make this calculation.");
 
             var expenseReportEntryCombinations = _expenseReport.Entries.CombinationsOfTwoNumbersWithoutRepetition();
-            
-            foreach (var entryCombination in expenseReportEntryCombinations)
-            {
-                if (entryCombination.Sum() == targetNumberWhenAddedTogether)
-                {
-                    var runningTotal = 1;
-                    foreach (var entry in entryCombination)
-                        runningTotal *= entry;
 
-                    return runningTotal;
-                }
-            }
-            
+            foreach (var entryCombination in expenseReportEntryCombinations)
+                if (entryCombination.Sum() == targetNumberWhenAddedTogether)
+                    return entryCombination.Aggregate(1, (current, entry) => current * entry);
+
             throw new Exception();
         }
 

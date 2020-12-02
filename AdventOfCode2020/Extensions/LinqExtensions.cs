@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2020.Services
@@ -13,15 +12,11 @@ namespace AdventOfCode2020.Services
 
             var combinations = new List<int[]>();
             var sourceArray = source as int[] ?? source.ToArray();
-            
+
             for (var i = 0; i < sourceArray.Length; i++)
-            {
-                for (var j = 0; j < sourceArray.Length; j++)
-                { 
-                    if (i != j && j > i)
-                        combinations.Add(new []{sourceArray.ElementAt(i), sourceArray.ElementAt(j)});
-                }
-            }
+            for (var j = 0; j < sourceArray.Length; j++)
+                if (i != j && j > i)
+                    combinations.Add(new[] {sourceArray.ElementAt(i), sourceArray.ElementAt(j)});
 
             return combinations;
         }
