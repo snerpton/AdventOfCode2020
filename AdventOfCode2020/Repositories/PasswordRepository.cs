@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Metadata.Ecma335;
 using AdventOfCode2020.Models;
 
 namespace AdventOfCode2020.Repositories
@@ -20,14 +21,23 @@ namespace AdventOfCode2020.Repositories
             return lines.Select(line => PasswordEntryFromFileLine(line));
         }
 
-        private PasswordEntry PasswordEntryFromFileLine(string line)
+        protected PasswordEntry PasswordEntryFromFileLine(string line)
         {
-            var lineParts = line.Split(new[] {':'});
-            var password = lineParts[1].Trim();
-            var policyMax = int.Parse(lineParts[0].Trim().Split(new[] {'-'}).ElementAt(1));
-            var policyMin = int.Parse(lineParts[0].Trim().Split(new[] {'-'}).ElementAt(0));
-            var passwordPolicy = new PasswordPolicy {RangeMax = policyMax, RangeMin = policyMin};
+            var password = PasswordFromLine(line);
+            var policyletter = PolicyLetterFromLine(line);
+            var policyMax = PolicyMaxFromLine(line);
+            var policyMin = PolicyMinFromLine(line);
+            var passwordPolicy = new PasswordPolicy { Letter = policyletter, RangeMax = policyMax, RangeMin = policyMin};
             return new PasswordEntry {Password = password, PwPolicy = passwordPolicy};
         }
+
+        private string PasswordFromLine(string line) => line.Split(new[] {':'})[1].Trim();
+
+        private char PolicyLetterFromLine(string line) => line.Split(new[] {'-', ' ', ':'})[2].First();
+        
+        private int PolicyMinFromLine(string line) => int.Parse(line.Split(new[] {'-'})[0]);
+
+        private int PolicyMaxFromLine(string line) => int.Parse(line.Split(new[] {'-', ' '})[1]);
+        
     }
 }
