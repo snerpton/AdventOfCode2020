@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Linq;
+using AdventOfCode2020.Extensions;
 using AdventOfCode2020.Models;
 
 namespace AdventOfCode2020.Services
 {
-    public class ExpenseReportService
+    public class ExpenseReportService : IExpenseReportService
     {
-        private readonly ExpenseReport _expenseReport;
+        private readonly IExpenseReport _expenseReport;
 
-        public ExpenseReportService(ExpenseReport expenseReport)
+        public ExpenseReportService(IExpenseReport expenseReport)
         {
             _expenseReport = expenseReport ?? throw new ArgumentNullException(nameof(expenseReport));
         }
@@ -30,7 +31,7 @@ namespace AdventOfCode2020.Services
             throw new Exception();
         }
 
-        private static bool ValidateExpenseReport(ExpenseReport expenseReport)
+        private static bool ValidateExpenseReport(IExpenseReport expenseReport)
         {
             if (expenseReport.Entries == null)
                 return false;

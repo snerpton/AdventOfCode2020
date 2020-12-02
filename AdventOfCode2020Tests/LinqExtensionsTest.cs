@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AdventOfCode2020.Extensions;
 using AdventOfCode2020.Services;
 using NUnit.Framework;
 
