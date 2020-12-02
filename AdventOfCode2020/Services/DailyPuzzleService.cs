@@ -46,11 +46,4 @@ namespace AdventOfCode2020.Services
             throw new NotImplementedException();
         }
     }
-
-    public interface IPasswordReportService
-    {
-        int NumberOfInvalidPasswords { get; set; }
-    }
-    
-    
 }
