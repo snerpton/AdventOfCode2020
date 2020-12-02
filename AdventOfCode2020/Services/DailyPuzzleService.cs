@@ -6,11 +6,15 @@ namespace AdventOfCode2020.Services
     public class DailyPuzzleService
     {
         private readonly IExpenseReportService _expenseReportService;
+        private readonly IPasswordReportService _passwordReportService;
 
-        public DailyPuzzleService(IExpenseReportService expenseReportService)
+        public DailyPuzzleService(IExpenseReportService expenseReportService, IPasswordReportService passwordReportService)
         {
             _expenseReportService =
                 expenseReportService ?? throw new ArgumentNullException(nameof(expenseReportService));
+
+            _passwordReportService =
+                passwordReportService ?? throw new ArgumentNullException(nameof(passwordReportService));
         }
         
         public void DoDailyPuzzle(AdventDayNumber dayNumber)
@@ -42,4 +46,11 @@ namespace AdventOfCode2020.Services
             throw new NotImplementedException();
         }
     }
+
+    public interface IPasswordReportService
+    {
+        int NumberOfInvalidPasswords { get; set; }
+    }
+    
+    
 }

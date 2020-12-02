@@ -18,7 +18,7 @@ namespace AdventOfCode2020
 
             // Solve Advent of Code daily puzzle
             var expenseReportService = _serviceProvider.GetService<IExpenseReportService>();
-            var dailyPuzzleService = new DailyPuzzleService(expenseReportService);
+            var dailyPuzzleService = new DailyPuzzleService(expenseReportService, null);
             dailyPuzzleService.DoDailyPuzzle(DayNumber);
         }
 
