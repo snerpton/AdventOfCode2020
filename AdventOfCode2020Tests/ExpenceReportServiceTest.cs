@@ -12,14 +12,14 @@ namespace AdventOfCode2020Tests
         [Test]
         public void Should_ThrowException_When_NullExpenseReport()
         {
-            Assert.Throws<ArgumentNullException>(() => new ExpenceReportService(null));
+            Assert.Throws<ArgumentNullException>(() => new ExpenseReportService(null));
         }
 
         [Test]
-        public void Should_ThrowException_When_ExpenceReportEntriesAreNull()
+        public void Should_ThrowException_When_ExpenseReportEntriesAreNull()
         {
             var mockExpenceReport = new ExpenseReport() { Entries = null };
-            var sut = new ExpenceReportService(mockExpenceReport);
+            var sut = new ExpenseReportService(mockExpenceReport);
 
             Assert.Throws<InvalidOperationException>(() => sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether());
         }
@@ -27,12 +27,38 @@ namespace AdventOfCode2020Tests
         [Test]
         [TestCase(new int[] { })]
         [TestCase(new int[] { 1 })]
-        public void Should_ThrowException_When_ExpenceReportNumberOfEntriesIsEmptyOrLessThan2(int[] expenceEntries)
+        public void Should_ThrowException_When_ExpenseReportNumberOfEntriesIsEmptyOrLessThan2(int[] expenseEntries)
         {
-            var mockExpenceReport = new ExpenseReport() { Entries = expenceEntries };
-            var sut = new ExpenceReportService(mockExpenceReport);
+            var mockExpenceReport = new ExpenseReport() { Entries = expenseEntries };
+            var sut = new ExpenseReportService(mockExpenceReport);
 
             Assert.Throws<InvalidOperationException>(() => sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether());
+        }
+
+        [Test]
+        [TestCase(new int[] { 0, 0 })]
+        [TestCase(new int[] { 2020, 1 })]
+        public void Should_ThrowException_When_Find2NumbersThatAddUpTo2020AndMultiplyTogetherUnableToFindCombination(int[] expenseReportEntries)
+        {
+            var expenseReport = new ExpenseReport {Entries = expenseReportEntries};
+            var sut = new ExpenseReportService(expenseReport);
+
+            Assert.Throws<Exception>(() => sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether());
+        }
+        
+        [Test]
+        [TestCase(new int[] { 2020, 0 }, 0)]
+        [TestCase(new int[] { 2019, 1 }, 2019)]
+        [TestCase(new int[] { 1, 2, 2018 }, 4036)]
+        [TestCase(new int[] { 1721, 979, 366, 299, 675, 1456 }, 514579)]
+        public void Should_Find2NumbersThatAddUpTo2020AndMultiplyTogether_WhenCombinationExists(int[] expenseReportEntries, int expected)
+        {
+            var expenseReport = new ExpenseReport {Entries = expenseReportEntries};
+            var sut = new ExpenseReportService(expenseReport);
+            
+            var result = sut.Find2NumbersThatAddUpTo2020AndMultiplyTogether();
+            
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }
