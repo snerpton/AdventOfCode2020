@@ -49,13 +49,29 @@ namespace AdventOfCode2020.Repositories
             
             throw new NotImplementedException();
         }
-
-        protected IEnumerable<MapLocation> MapLocationsFromLine(string line)
+        
+        protected IEnumerable<MapLocation> MapLocationsFromLine(string line, int yPosition)
         {
             if (line == null)
                 throw new ArgumentNullException(nameof(line));
             
-            throw new NotImplementedException();
-        } 
+            if (ValidateLine(line) == false)
+                throw new ArgumentOutOfRangeException(nameof(line));
+
+            return line.Select((character, xIndex) => new MapLocation
+                {Type = TypeFromCharacter(character), XPosition = xIndex, YPosition = yPosition}).ToList();
+        }
+
+        private static bool ValidateLine(string line) =>
+            line.All(character => character == '.' || character == '#');
+
+        private PositionType TypeFromCharacter(char character)
+        {
+            return character switch
+            {
+                '.' => PositionType.Open,
+                '#' => PositionType.Tree
+            };
+        }
     }
 }
