@@ -21,10 +21,8 @@ namespace AdventOfCode2020.Services
             _passwordEntries = passwordEntries ?? throw new ArgumentNullException(nameof(passwordEntries));
         }
         
-        public int NumberOfInvalidPasswords()
-        {
-            throw new NotImplementedException();
-        }
+        public int NumberOfInvalidPasswords() => _passwordEntries.Count(x => ValidatePassword(x) == false);
+        
 
         public bool ValidatePassword(PasswordEntry passwordEntry)
         {
