@@ -24,22 +24,32 @@ namespace AdventOfCode2020.Services
         public bool ValidatePassword(PasswordEntry passwordEntry)
         {
             // Validate policy
-            if (passwordEntry.PwPolicy.RangeMin < 0)
+            if (passwordEntry.PwPolicy.Position1 < 0)
                 return false;
 
-            if (passwordEntry.PwPolicy.RangeMax < 0)
+            if (passwordEntry.PwPolicy.Position2 < 0)
                 return false;
 
-            if (passwordEntry.PwPolicy.RangeMax < passwordEntry.PwPolicy.RangeMin) 
-                return false;
-
-            var occurenceOfLetterInPassword = passwordEntry.Password.Occurence(passwordEntry.PwPolicy.Letter);
-
-            if (occurenceOfLetterInPassword < passwordEntry.PwPolicy.RangeMin ||
-                occurenceOfLetterInPassword > passwordEntry.PwPolicy.RangeMax)
+            if (ValidatePassWordAgainstPolicy(passwordEntry) == false)
                 return false;
             
             return true;
+        }
+
+        private bool ValidatePassWordAgainstPolicy(PasswordEntry passwordEntry)
+        {
+            return
+                CharacterInPosition(passwordEntry.Password,
+                    passwordEntry.PwPolicy.Letter,
+                    passwordEntry.PwPolicy.Position1) ^
+                CharacterInPosition(passwordEntry.Password,
+                    passwordEntry.PwPolicy.Letter,
+                    passwordEntry.PwPolicy.Position2);
+        }
+        
+        private bool CharacterInPosition(string haystack, char needle, int position)
+        {
+            return haystack.Substring(position - 1,1) == needle.ToString();
         }
     }
 }
