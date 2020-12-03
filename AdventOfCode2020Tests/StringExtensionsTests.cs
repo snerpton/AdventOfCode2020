@@ -19,6 +19,7 @@ namespace AdventOfCode2020Tests
             [Test]
             [TestCase("abc",'a', 1)]
             [TestCase("abac",'a', 2)]
+            [TestCase("abaabaaba",'a', 6)]
             public void Should_ReturnCorrectCount_When_NeedleFound(string haystack, char needle, int expectedCount)
             {
                 var sut = haystack.Occurence(needle);

@@ -18,17 +18,25 @@ namespace AdventOfCode2020
 
             // Solve Advent of Code daily puzzle
             var expenseReportService = _serviceProvider.GetService<IExpenseReportService>();
-            var dailyPuzzleService = new DailyPuzzleService(expenseReportService, null);
+            var passwordReportService = _serviceProvider.GetService<IPasswordReportService>();
+            var dailyPuzzleService = new DailyPuzzleService(expenseReportService, passwordReportService);
             dailyPuzzleService.DoDailyPuzzle(DayNumber);
         }
 
         private static void RegisterServices(IServiceCollection serviceProvider)
         {
             _serviceProvider = serviceProvider
+                // Day 1    
                 .AddSingleton<IPuzzleReportEntriesRepository, PuzzleReportEntriesRepository>()
                 .AddSingleton<IExpenseReport, ExpenseReport>(s =>
                     new ExpenseReport(s.GetService<IPuzzleReportEntriesRepository>()))
                 .AddSingleton<IExpenseReportService, ExpenseReportService>()
+                
+                // Day 2
+                .AddSingleton<IPasswordRepository, PasswordRepository>()
+                .AddSingleton<IPasswordReportService, PasswordReportService>(s => new PasswordReportService(s
+                    .GetService<IPasswordRepository>()
+                    .ReadFile()))
                 .BuildServiceProvider();
         }
     }

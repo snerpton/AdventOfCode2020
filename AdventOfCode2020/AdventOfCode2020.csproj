@@ -16,6 +16,10 @@
     <Content Include="Assets\Day1PuzzleInputReportEntries.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Remove="Assets\Day2PuzzleInputPasswordList.txt" />
+    <Content Include="Assets\Day2PuzzleInputPasswordList.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

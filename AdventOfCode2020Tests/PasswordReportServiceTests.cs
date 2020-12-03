@@ -32,9 +32,9 @@ namespace AdventOfCode2020Tests
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfInvalidPasswords();
+                var inValidCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 0);
+                Assert.That(inValidCount == 3);
             }
             
             [Test]
@@ -46,9 +46,9 @@ namespace AdventOfCode2020Tests
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfInvalidPasswords();
+                var inValidCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 1);
+                Assert.That(inValidCount == 2);
             }
             
             [Test]
@@ -60,9 +60,9 @@ namespace AdventOfCode2020Tests
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfInvalidPasswords();
+                var inValidCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 2);
+                Assert.That(inValidCount == 1);
             }
         }
         

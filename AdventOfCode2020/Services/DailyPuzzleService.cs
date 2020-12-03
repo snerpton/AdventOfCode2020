@@ -43,7 +43,8 @@ namespace AdventOfCode2020.Services
         
         private void DoDay2()
         {
-            throw new NotImplementedException();
+            var numberOfInvalidPassword = _passwordReportService.NumberOfValidPasswords();
+            Console.WriteLine($"Number of valid password: {numberOfInvalidPassword}");
         }
     }
 }

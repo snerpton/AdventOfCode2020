@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata.Ecma335;
 using AdventOfCode2020.Extensions;
 using AdventOfCode2020.Models;
 
@@ -13,7 +12,6 @@ namespace AdventOfCode2020.Services
 
         public PasswordReportService()
         {
-            
         }
         
         public PasswordReportService(IEnumerable<PasswordEntry> passwordEntries)
@@ -21,8 +19,7 @@ namespace AdventOfCode2020.Services
             _passwordEntries = passwordEntries ?? throw new ArgumentNullException(nameof(passwordEntries));
         }
         
-        public int NumberOfInvalidPasswords() => _passwordEntries.Count(x => ValidatePassword(x) == false);
-        
+        public int NumberOfValidPasswords() => _passwordEntries.Count(x => ValidatePassword(x) == true);
 
         public bool ValidatePassword(PasswordEntry passwordEntry)
         {
