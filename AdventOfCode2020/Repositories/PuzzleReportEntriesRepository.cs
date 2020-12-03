@@ -52,6 +52,9 @@ namespace AdventOfCode2020.Repositories
 
         protected IEnumerable<MapLocation> MapLocationsFromLine(string line)
         {
+            if (line == null)
+                throw new ArgumentNullException(nameof(line));
+            
             throw new NotImplementedException();
         } 
     }
