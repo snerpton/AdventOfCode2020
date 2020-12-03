@@ -55,3 +55,13 @@ More information about Advent of Code can be found at https://adventofcode.com/2
    - `2-9 c: ccccccccc` is invalid: both position 2 and position 9 contain c.
    
    Exactly one of these positions must contain the specified letter.
+  
+   
+ ## Day 3
+ 
+ - Puzzle input is a map of trees where `.` represents open space, and `#` represents a tree.
+ - Trees grow on a grid pattern.
+ - Pattern repeats horizontally.
+ - Navigate from top-left to off bottom of map in a move right 3 places and down 1. In this way you navigate diagonally downward.
+ - Aim of puzzle is to count the number of trees you stop on i.e. after the 3-right 1-down move.
+  

@@ -12,6 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Day3PuzzleInputMapOfTrees.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Remove="Assets\PuzzleReportEntries.txt" />
     <Content Include="Assets\Day1PuzzleInputReportEntries.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

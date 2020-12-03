@@ -19,4 +19,40 @@ namespace AdventOfCode2020.Repositories
             return lines.Select(int.Parse);
         }
     }
+    
+    public interface IXmasTreeMapRepository
+    {
+        IEnumerable<MapLocation> ReadFile();
+    }
+
+    public enum PositionType
+    {
+        Open,
+        Tree
+    }
+    public class MapLocation
+    {
+        public int XPosition { get; set; }
+        public int YPosition { get; set; }
+        public PositionType Type { get; set; }
+    }
+
+    public class XmasTreeMapRepository : IXmasTreeMapRepository
+    {
+        private static readonly string PuzzleReportPathAndFileName =
+            Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath) +
+            "Day3PuzzleInputMapOfTrees.txt";
+
+        public IEnumerable<MapLocation> ReadFile()
+        {
+            var lines = File.ReadLines(PuzzleReportPathAndFileName);
+            
+            throw new NotImplementedException();
+        }
+
+        protected IEnumerable<MapLocation> MapLocationsFromLine(string line)
+        {
+            throw new NotImplementedException();
+        } 
+    }
 }
