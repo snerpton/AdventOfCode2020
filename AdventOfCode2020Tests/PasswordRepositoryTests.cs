@@ -22,7 +22,7 @@ namespace AdventOfCode2020Tests
 
             var passwordEntry = sut.PasswordEntryFromFileLine(line);
             
-            Assert.That(passwordEntry.PwPolicy.RangeMin == expectedResult);
+            Assert.That(passwordEntry.PwPolicy.Position1 == expectedResult);
         }
         
         [Test]
@@ -35,7 +35,7 @@ namespace AdventOfCode2020Tests
 
             var passwordEntry = sut.PasswordEntryFromFileLine(line);
             
-            Assert.That(passwordEntry.PwPolicy.RangeMax == expectedResult);
+            Assert.That(passwordEntry.PwPolicy.Position2 == expectedResult);
         }
         
         [Test]

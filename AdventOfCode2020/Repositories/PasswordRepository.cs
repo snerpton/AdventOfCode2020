@@ -27,7 +27,7 @@ namespace AdventOfCode2020.Repositories
             var policyletter = PolicyLetterFromLine(line);
             var policyMax = PolicyMaxFromLine(line);
             var policyMin = PolicyMinFromLine(line);
-            var passwordPolicy = new PasswordPolicy { Letter = policyletter, RangeMax = policyMax, RangeMin = policyMin};
+            var passwordPolicy = new PasswordPolicy { Letter = policyletter, Position2 = policyMax, Position1 = policyMin};
             return new PasswordEntry {Password = password, PwPolicy = passwordPolicy};
         }
 

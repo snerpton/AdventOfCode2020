@@ -26,43 +26,43 @@ namespace AdventOfCode2020Tests
             [Test]
             public void Should_Return0InValidPasswordCount_When_0InValid()
             {
-                var pwEntry1 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 3}};
-                var pwEntry2 = new PasswordEntry{Password = "abb", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 1}};
-                var pwEntry3 = new PasswordEntry{Password = "abb", PwPolicy = new PasswordPolicy{ Letter = 'b', RangeMin = 1, RangeMax = 2}};
+                var pwEntry1 = new PasswordEntry{Password = "abb", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}};
+                var pwEntry2 = new PasswordEntry{Password = "bab", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}};
+                var pwEntry3 = new PasswordEntry{Password = "bba", PwPolicy = new PasswordPolicy{ Letter = 'b', Position1 = 1, Position2 = 3}};
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfValidPasswords();
+                var validCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 3);
+                Assert.That(validCount == 3);
             }
             
             [Test]
             public void Should_Return1InValidPasswordCount_When_1InValid()
             {
-                var pwEntry1 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'b', RangeMin = 1, RangeMax = 1}}; // Not valid, count is 0
-                var pwEntry2 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 3}};
-                var pwEntry3 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 3}};
+                var pwEntry1 = new PasswordEntry{Password = "aab", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}}; // not valid
+                var pwEntry2 = new PasswordEntry{Password = "bab", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}};
+                var pwEntry3 = new PasswordEntry{Password = "bba", PwPolicy = new PasswordPolicy{ Letter = 'b', Position1 = 1, Position2 = 3}};
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfValidPasswords();
+                var validCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 2);
+                Assert.That(validCount == 2);
             }
             
             [Test]
             public void Should_Return2InValidPasswordCount_When_2InValid()
             {
-                var pwEntry1 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'b', RangeMin = 1, RangeMax = 1}}; // Not valid, count is 0
-                var pwEntry2 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 2}}; // Not valid, count is 3
-                var pwEntry3 = new PasswordEntry{Password = "aaa", PwPolicy = new PasswordPolicy{ Letter = 'a', RangeMin = 1, RangeMax = 3}};
+                var pwEntry1 = new PasswordEntry{Password = "aab", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}}; // not valid
+                var pwEntry2 = new PasswordEntry{Password = "bba", PwPolicy = new PasswordPolicy{ Letter = 'a', Position1 = 1, Position2 = 2}}; // not valid
+                var pwEntry3 = new PasswordEntry{Password = "bba", PwPolicy = new PasswordPolicy{ Letter = 'b', Position1 = 1, Position2 = 3}};
                 var pwEntries = new List<PasswordEntry> {pwEntry1, pwEntry2, pwEntry3};
 
                 var sut = new PasswordReportService(pwEntries);
-                var inValidCount = sut.NumberOfValidPasswords();
+                var validCount = sut.NumberOfValidPasswords();
                 
-                Assert.That(inValidCount == 1);
+                Assert.That(validCount == 1);
             }
         }
         
@@ -71,7 +71,7 @@ namespace AdventOfCode2020Tests
         {
             [Test]
             [TestCase("1-3 a: abcde", true)]
-            [TestCase("2-9 c: ccccccccc", true)]
+            [TestCase("1-3 c: abcde", true)]
             public void Should_ReturnTrue_When_ValidPassword(string passwordEntryAsString, bool expectedValid)
             {
                 var passwordRepository = new PasswordRepositoryTestWrapper();
@@ -85,6 +85,8 @@ namespace AdventOfCode2020Tests
             
             [Test]
             [TestCase("1-3 b: cdefg", false)]
+            [TestCase("2-9 c: ccccccccc", false)]
+            [TestCase("1-3 c: abade", false)]
             [TestCase("2-1 b: bbb", false)]
             [TestCase("1-2 a: bbb", false)]
             [TestCase("1-2 b: bbb", false)]
