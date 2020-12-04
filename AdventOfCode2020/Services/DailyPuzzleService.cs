@@ -56,8 +56,44 @@ namespace AdventOfCode2020.Services
         
         private void DoDay3()
         {
+            Console.WriteLine("Part 1...");
             var numberOfTreesEncountered = _xmasTreeMapService.CountTrees(3,1);
-            Console.WriteLine($"Number of trees encountered: {numberOfTreesEncountered}");
+            Console.WriteLine($"Number of trees encountered for right 3, down 1: {numberOfTreesEncountered}");
+            Console.WriteLine();
+
+            Console.WriteLine("Part 2...");
+            var runningMultiplyTotal = 1;
+            var right = 1;
+            var down = 1;
+            numberOfTreesEncountered = _xmasTreeMapService.CountTrees(right,down);
+            Console.WriteLine($"Number of trees encountered for right {right}, down {down}: {numberOfTreesEncountered}");
+            runningMultiplyTotal = runningMultiplyTotal * numberOfTreesEncountered;
+            
+            right = 3; 
+            down = 1;
+            numberOfTreesEncountered = _xmasTreeMapService.CountTrees(right,down);
+            Console.WriteLine($"Number of trees encountered for right {right}, down {down}: {numberOfTreesEncountered}");
+            runningMultiplyTotal = runningMultiplyTotal * numberOfTreesEncountered;
+            
+            right = 5; 
+            down = 1;
+            numberOfTreesEncountered = _xmasTreeMapService.CountTrees(right,down);
+            Console.WriteLine($"Number of trees encountered for right {right}, down {down}: {numberOfTreesEncountered}");
+            runningMultiplyTotal = runningMultiplyTotal * numberOfTreesEncountered;
+            
+            right = 7; 
+            down = 1;
+            numberOfTreesEncountered = _xmasTreeMapService.CountTrees(right,down);
+            Console.WriteLine($"Number of trees encountered for right {right}, down {down}: {numberOfTreesEncountered}");
+            runningMultiplyTotal = runningMultiplyTotal * numberOfTreesEncountered;
+            
+            right = 1; 
+            down = 2;
+            numberOfTreesEncountered = _xmasTreeMapService.CountTrees(right,down);
+            Console.WriteLine($"Number of trees encountered for right {right}, down {down}: {numberOfTreesEncountered}");
+            runningMultiplyTotal = runningMultiplyTotal * numberOfTreesEncountered;
+
+            Console.WriteLine($"Totals multiplied together: {runningMultiplyTotal}");
         }
     }
 }
