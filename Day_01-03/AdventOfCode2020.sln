@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020", "AdventO
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DBC57DE2-E7B3-4575-8717-39D255B58293}"
 	ProjectSection(SolutionItems) = preProject
-		ReadMe.md = ReadMe.md
+		..\ReadMe.md = ..\ReadMe.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020Tests", "AdventOfCode2020Tests\AdventOfCode2020Tests.csproj", "{4342E495-5D20-49DC-86E4-B58130740532}"
