@@ -8,7 +8,7 @@ namespace AdventOfCode2020
     class Program
     {
         private static ServiceProvider _serviceProvider;
-        private const AdventDayNumber DayNumber = Models.AdventDayNumber.Day02;
+        private const AdventDayNumber DayNumber = Models.AdventDayNumber.Day03;
 
         static void Main(string[] args)
         {
@@ -19,7 +19,8 @@ namespace AdventOfCode2020
             // Solve Advent of Code daily puzzle
             var expenseReportService = _serviceProvider.GetService<IExpenseReportService>();
             var passwordReportService = _serviceProvider.GetService<IPasswordReportService>();
-            var dailyPuzzleService = new DailyPuzzleService(expenseReportService, passwordReportService);
+            var xmasTreeMapService = _serviceProvider.GetService<IXmasTreeMapService>();
+            var dailyPuzzleService = new DailyPuzzleService(expenseReportService, passwordReportService, xmasTreeMapService);
             dailyPuzzleService.DoDailyPuzzle(DayNumber);
         }
 
@@ -34,9 +35,15 @@ namespace AdventOfCode2020
                 
                 // Day 2
                 .AddSingleton<IPasswordRepository, PasswordRepository>()
-                .AddSingleton<IPasswordReportService, PasswordReportService>(s => new PasswordReportService(s
-                    .GetService<IPasswordRepository>()
-                    .ReadFile()))
+                .AddSingleton<IPasswordReportService, PasswordReportService>(s => 
+                    new PasswordReportService(s
+                    .GetService<IPasswordRepository>().ReadFile()))
+                
+            
+                // Day 3
+                .AddSingleton<IXmasTreeMapRepository, XmasTreeMapRepository>()
+                .AddSingleton<IXmasTreeMapService, XmasTreeMapService>(s =>
+                    new XmasTreeMapService(s.GetService<IXmasTreeMapRepository>().ReadFile(), 3, 1))
                 .BuildServiceProvider();
         }
     }

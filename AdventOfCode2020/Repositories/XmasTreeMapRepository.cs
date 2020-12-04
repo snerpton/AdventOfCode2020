@@ -11,13 +11,13 @@ namespace AdventOfCode2020.Repositories
     {
         private static readonly string PuzzleReportPathAndFileName =
             Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath) +
-            "Day3PuzzleInputMapOfTrees.txt";
+            "/Assets/Day3PuzzleInputMapOfTrees.txt";
 
         public IEnumerable<MapLocation> ReadFile()
         {
             var lines = File.ReadLines(PuzzleReportPathAndFileName);
-            
-            throw new NotImplementedException();
+
+            return MapLocationsFromLines(lines.ToArray());
         }
 
         protected IEnumerable<MapLocation> MapLocationsFromLines(string[] lines)

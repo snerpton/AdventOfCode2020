@@ -7,14 +7,18 @@ namespace AdventOfCode2020.Services
     {
         private readonly IExpenseReportService _expenseReportService;
         private readonly IPasswordReportService _passwordReportService;
+        private readonly IXmasTreeMapService _xmasTreeMapService;
 
-        public DailyPuzzleService(IExpenseReportService expenseReportService, IPasswordReportService passwordReportService)
+        public DailyPuzzleService(IExpenseReportService expenseReportService, IPasswordReportService passwordReportService, IXmasTreeMapService xmasTreeMapService)
         {
             _expenseReportService =
                 expenseReportService ?? throw new ArgumentNullException(nameof(expenseReportService));
 
             _passwordReportService =
                 passwordReportService ?? throw new ArgumentNullException(nameof(passwordReportService));
+
+            _xmasTreeMapService = 
+                xmasTreeMapService ?? throw new ArgumentNullException(nameof(xmasTreeMapService));
         }
         
         public void DoDailyPuzzle(AdventDayNumber dayNumber)
@@ -26,6 +30,9 @@ namespace AdventOfCode2020.Services
                     break;
                 case AdventDayNumber.Day02:
                     DoDay2();
+                    break;
+                case AdventDayNumber.Day03:
+                    DoDay3();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -45,6 +52,12 @@ namespace AdventOfCode2020.Services
         {
             var numberOfInvalidPassword = _passwordReportService.NumberOfValidPasswords();
             Console.WriteLine($"Number of valid password: {numberOfInvalidPassword}");
+        }
+        
+        private void DoDay3()
+        {
+            var numberOfTreesEncountered = _xmasTreeMapService.CountTrees();
+            Console.WriteLine($"Number of trees encountered: {numberOfTreesEncountered}");
         }
     }
 }
