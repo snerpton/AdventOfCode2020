@@ -94,7 +94,7 @@ namespace AdventOfCode2020Tests
             {
                 var sut = new XmasTreeMapRepositoryWrapper();
 
-                Assert.Throws<ArgumentNullException>(() => sut.MapLocationsFromLines(Enumerable.Empty<string>().ToArray()));
+                Assert.Throws<ArgumentOutOfRangeException>(() => sut.MapLocationsFromLines(Enumerable.Empty<string>().ToArray()));
             }
 
             [Test]
@@ -104,23 +104,23 @@ namespace AdventOfCode2020Tests
                 var sut = new XmasTreeMapRepositoryWrapper();
                 var expectedTreeMap = new List<MapLocation>()
                 {
-                    new MapLocation{ Type = PositionType.Open, XPosition = 0, YPosition = 1},
-                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 1},
-                    new MapLocation{ Type = PositionType.Open, XPosition = 2, YPosition = 1},
-                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 2},
-                    new MapLocation{ Type = PositionType.Open, XPosition = 2, YPosition = 2},
-                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 2},
+                    new MapLocation{ Type = PositionType.Open, XPosition = 0, YPosition = 0},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 0},
+                    new MapLocation{ Type = PositionType.Open, XPosition = 2, YPosition = 0},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 0, YPosition = 1},
+                    new MapLocation{ Type = PositionType.Open, XPosition = 1, YPosition = 1},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 2, YPosition = 1},
                 };
 
                 var resultTreeMap = sut.MapLocationsFromLines(lines).ToList();
                 
                 // Line 1
-                Assert.That(resultTreeMap.Count() == expectedTreeMap.Count);
+                Assert.That(resultTreeMap.Count() == expectedTreeMap.Count, $"Count: {resultTreeMap.Count()} != {expectedTreeMap.Count}");
                 for (var i = 0; i < resultTreeMap.Count; i++)
                 {
-                    Assert.That(resultTreeMap[i].Type == expectedTreeMap[i].Type);
-                    Assert.That(resultTreeMap[i].XPosition == expectedTreeMap[i].XPosition);
-                    Assert.That(resultTreeMap[i].YPosition == expectedTreeMap[i].YPosition); 
+                    Assert.That(resultTreeMap[i].Type == expectedTreeMap[i].Type, $"Type[{i}]: {resultTreeMap[i].Type} != {expectedTreeMap[i].Type}");
+                    Assert.That(resultTreeMap[i].XPosition == expectedTreeMap[i].XPosition, $"XPosition[{i}]: {resultTreeMap[i].XPosition} != {expectedTreeMap[i].XPosition}");
+                    Assert.That(resultTreeMap[i].YPosition == expectedTreeMap[i].YPosition, $"YPosition[{i}]: {resultTreeMap[i].YPosition} != {expectedTreeMap[i].YPosition}"); 
                 }
             }
         }

@@ -52,7 +52,17 @@ namespace AdventOfCode2020.Repositories
 
         protected IEnumerable<MapLocation> MapLocationsFromLines(string[] lines)
         {
-            throw new NotImplementedException();
+            if (lines == null)
+                throw new ArgumentNullException(nameof(lines));
+            
+            if (lines.Length == 0)
+                throw new ArgumentOutOfRangeException(nameof(lines));
+
+            var locationMap = new List<MapLocation>();
+            for (var y = 0; y < lines.Length; y++)
+                locationMap.AddRange(MapLocationsFromLine(lines[y], y));
+
+            return locationMap;
         }
         
         protected IEnumerable<MapLocation> MapLocationsFromLine(string line, int yPosition)
