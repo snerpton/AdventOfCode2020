@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AdventOfCode2020.Models;
 using AdventOfCode2020.Repositories;
 using AdventOfCode2020.Services;
 using NUnit.Framework;

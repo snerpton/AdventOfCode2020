@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AdventOfCode2020.Models;
 using AdventOfCode2020.Repositories;
 
 namespace AdventOfCode2020.Services
