@@ -49,6 +49,11 @@ namespace AdventOfCode2020.Repositories
             
             throw new NotImplementedException();
         }
+
+        protected IEnumerable<MapLocation> MapLocationsFromLines(string[] lines)
+        {
+            throw new NotImplementedException();
+        }
         
         protected IEnumerable<MapLocation> MapLocationsFromLine(string line, int yPosition)
         {

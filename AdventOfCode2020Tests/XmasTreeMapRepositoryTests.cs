@@ -11,6 +11,8 @@ namespace AdventOfCode2020Tests
         private class XmasTreeMapRepositoryWrapper : XmasTreeMapRepository
         {
             public new IEnumerable<MapLocation> MapLocationsFromLine(string line, int yPosition) => base.MapLocationsFromLine(line, yPosition);
+            public new IEnumerable<MapLocation> MapLocationsFromLines(string[] lines) => base.MapLocationsFromLines(lines);
+
         }
 
         public class MapLocationsFromLineTests
@@ -74,6 +76,52 @@ namespace AdventOfCode2020Tests
                 Assert.That(resultTreeMap[2].Type == expectedTreeMap[2].Type);
                 Assert.That(resultTreeMap[2].XPosition == expectedTreeMap[2].XPosition);
                 Assert.That(resultTreeMap[2].YPosition == expectedTreeMap[2].YPosition);
+            }
+        }
+
+        public class MapLocationsFromLinesTests
+        {
+            [Test]
+            public void Should_ThrowException_When_LinesNullCollection()
+            {
+                var sut = new XmasTreeMapRepositoryWrapper();
+
+                Assert.Throws<ArgumentNullException>(() => sut.MapLocationsFromLines(null));
+            }
+            
+            [Test]
+            public void Should_ThrowException_When_LineEmptyCollection()
+            {
+                var sut = new XmasTreeMapRepositoryWrapper();
+
+                Assert.Throws<ArgumentNullException>(() => sut.MapLocationsFromLines(Enumerable.Empty<string>().ToArray()));
+            }
+
+            [Test]
+            public void Should_CreateMap_When_ValidLines()
+            {
+                var lines = new string[] {".#.", "#.#"};
+                var sut = new XmasTreeMapRepositoryWrapper();
+                var expectedTreeMap = new List<MapLocation>()
+                {
+                    new MapLocation{ Type = PositionType.Open, XPosition = 0, YPosition = 1},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 1},
+                    new MapLocation{ Type = PositionType.Open, XPosition = 2, YPosition = 1},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 2},
+                    new MapLocation{ Type = PositionType.Open, XPosition = 2, YPosition = 2},
+                    new MapLocation{ Type = PositionType.Tree, XPosition = 1, YPosition = 2},
+                };
+
+                var resultTreeMap = sut.MapLocationsFromLines(lines).ToList();
+                
+                // Line 1
+                Assert.That(resultTreeMap.Count() == expectedTreeMap.Count);
+                for (var i = 0; i < resultTreeMap.Count; i++)
+                {
+                    Assert.That(resultTreeMap[i].Type == expectedTreeMap[i].Type);
+                    Assert.That(resultTreeMap[i].XPosition == expectedTreeMap[i].XPosition);
+                    Assert.That(resultTreeMap[i].YPosition == expectedTreeMap[i].YPosition); 
+                }
             }
         }
     }
