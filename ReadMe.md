@@ -64,4 +64,48 @@ More information about Advent of Code can be found at https://adventofcode.com/2
  - Pattern repeats horizontally.
  - Navigate from top-left to off bottom of map in a move right 3 places and down 1. In this way you navigate diagonally downward.
  - Aim of puzzle is to count the number of trees you stop on i.e. after the 3-right 1-down move.
-  
+ 
+ 
+ 
+ ## Day 4
+ 
+ - Passprts have following fields:
+   
+   - byr (Birth Year)
+   - iyr (Issue Year)
+   - eyr (Expiration Year)
+   - hgt (Height)
+   - hcl (Hair Color)
+   - ecl (Eye Color)
+   - pid (Passport ID)
+   - cid (Country ID)
+   
+ - North Pole Credentials are the same as a passport, but without the `cid` field.
+ - Scanner processes passports in batch files (puzzle input).
+ - Passport made up of `key:value` pairs separated by spaces or new lines. Passports are separated by new lines.
+ - Example batch file:
+   ```
+   ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+   byr:1937 iyr:2017 cid:147 hgt:183cm
+   
+   iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
+   hcl:#cfa07d byr:1929
+   
+   hcl:#ae17e1 iyr:2013
+   eyr:2024
+   ecl:brn pid:760753108 byr:1931
+   hgt:179cm
+   
+   hcl:#cfa07d eyr:2025 pid:166559648
+   iyr:2011 ecl:brn hgt:59in 
+   ```
+   where: 
+   
+   - passport 1 is valid as all fields are present
+   - passport 2 is invalid as `hgt` field is missing
+   - passport 3 is in valid as `cid` filed is missing
+   - passport 4 is invalid as `cid` and `byr` fields missing.
+   
+ - As a one-off we should also treat the `cid` as optional, and hence allow North Pole Credentials to be used like a passport i.e passport 3 should be treated as apassport even though it is a North Pole Credential
+ - Requirement: how many passports are valid there? 
+ 
