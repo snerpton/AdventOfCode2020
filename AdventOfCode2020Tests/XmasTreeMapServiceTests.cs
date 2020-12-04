@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AdventOfCode2020.Models;
 using AdventOfCode2020.Repositories;
 using AdventOfCode2020.Services;
+using Moq;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 
@@ -19,25 +21,28 @@ namespace AdventOfCode2020Tests
         [Test]
         public void Should_ThrowException_When_NullXmasTreeMap()
         {
-            Assert.Throws<ArgumentNullException>(() => new XmasTreeMapService(null, 1, 1));
+            Assert.Throws<ArgumentNullException>(() => new XmasTreeMapService(null));
         }
         
         [Test]
         public void Should_ThrowException_When_EmptyXmasTreeMap()
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => new XmasTreeMapService(new List<MapLocation>(), 1, 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new XmasTreeMapService(new List<MapLocation>()));
         }
         
-        [Test]
-        [TestCase(-1,1)]
-        [TestCase(1,-1)]
-        public void Should_ThrowException_When_InvalidSingleMoves(int singleMoveX, int singleMoveY)
-        {
-            Assert.Throws<ArgumentOutOfRangeException>(() => new XmasTreeMapService(new List<MapLocation>(), singleMoveX, singleMoveY));
-        }
-
         public class CountTreesTests
         {
+            [Test]
+            [TestCase(-1,1)]
+            [TestCase(1,-1)]
+            public void Should_ThrowException_When_InvalidSingleMoves(int singleMoveX, int singleMoveY)
+            {
+                var mockXmasTreeMap = new List<MapLocation>() { new MapLocation() };
+                var sut = new XmasTreeMapService(mockXmasTreeMap);
+                
+                Assert.Throws<ArgumentOutOfRangeException>(() => sut.CountTrees(singleMoveX, singleMoveY));
+            }
+            
             [Test]
             public void Should_CalculateNumberOfTrees()
             {
@@ -60,9 +65,9 @@ namespace AdventOfCode2020Tests
                 int singleMoveY = 1;
                 var expectedNumberOfTrees = 7;
                 var xmasTreeMap = new XmasTreeMapRepositoryWrapper();
-                var sut = new XmasTreeMapService(xmasTreeMap.MapLocationsFromLines(lines.ToArray()), singleMoveX, singleMoveY);
+                var sut = new XmasTreeMapService(xmasTreeMap.MapLocationsFromLines(lines.ToArray()));
                 
-                var resultNumberOfTrees = sut.CountTrees();
+                var resultNumberOfTrees = sut.CountTrees(singleMoveX, singleMoveY);
                 
                 Assert.That(resultNumberOfTrees == expectedNumberOfTrees, $"{resultNumberOfTrees} : {expectedNumberOfTrees}");
             }

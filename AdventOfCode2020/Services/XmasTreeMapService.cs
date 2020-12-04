@@ -8,10 +8,8 @@ namespace AdventOfCode2020.Services
     public class XmasTreeMapService : IXmasTreeMapService
     {
         private readonly IEnumerable<MapLocation> _xmasTreeMap;
-        private readonly int _singleMoveX;
-        private readonly int _singleMoveY;
-        
-        public XmasTreeMapService(IEnumerable<MapLocation> xmasTreeMap , int singleMoveX, int singleMoveY)
+
+        public XmasTreeMapService(IEnumerable<MapLocation> xmasTreeMap)
         {
             if (xmasTreeMap == null)
                 throw new ArgumentNullException(nameof(xmasTreeMap));
@@ -20,20 +18,16 @@ namespace AdventOfCode2020.Services
                 throw new ArgumentOutOfRangeException(nameof(xmasTreeMap));
 
             _xmasTreeMap = xmasTreeMap;
+        }
 
+        public int CountTrees(int singleMoveX, int singleMoveY)
+        {
             if (singleMoveX < 0)
                 throw new ArgumentOutOfRangeException(nameof(singleMoveX));
-
-            _singleMoveX = singleMoveX;
 
             if (singleMoveY < 0)
                 throw new ArgumentOutOfRangeException(nameof(singleMoveY));
 
-            _singleMoveY = singleMoveY;
-        }
-
-        public int CountTrees()
-        {
             var currentPositionX = 0;
             var currentPositionY = 0;
             var maxIndexX = _xmasTreeMap.Max(x => x.XPosition);
@@ -42,10 +36,10 @@ namespace AdventOfCode2020.Services
 
             while (currentPositionY <= maxIndexY)
             {
-                var newPositionX = currentPositionX + _singleMoveX > maxIndexX
-                    ? currentPositionX + _singleMoveX - maxIndexX -1
-                    : currentPositionX + _singleMoveX;
-                var newPositionY = currentPositionY + _singleMoveY;
+                var newPositionX = currentPositionX + singleMoveX > maxIndexX
+                    ? currentPositionX + singleMoveX - maxIndexX -1
+                    : currentPositionX + singleMoveX;
+                var newPositionY = currentPositionY + singleMoveY;
 
                 currentPositionX = newPositionX;
                 currentPositionY = newPositionY;

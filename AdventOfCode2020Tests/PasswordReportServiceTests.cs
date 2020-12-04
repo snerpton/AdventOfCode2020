@@ -4,7 +4,6 @@ using AdventOfCode2020.Models;
 using AdventOfCode2020.Repositories;
 using AdventOfCode2020.Services;
 using NUnit.Framework;
-using System.Linq;
 
 namespace AdventOfCode2020Tests
 {

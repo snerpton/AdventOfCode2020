@@ -43,7 +43,7 @@ namespace AdventOfCode2020
                 // Day 3
                 .AddSingleton<IXmasTreeMapRepository, XmasTreeMapRepository>()
                 .AddSingleton<IXmasTreeMapService, XmasTreeMapService>(s =>
-                    new XmasTreeMapService(s.GetService<IXmasTreeMapRepository>().ReadFile(), 3, 1))
+                    new XmasTreeMapService(s.GetService<IXmasTreeMapRepository>().ReadFile()))
                 .BuildServiceProvider();
         }
     }

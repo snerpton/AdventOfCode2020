@@ -56,7 +56,7 @@ namespace AdventOfCode2020.Services
         
         private void DoDay3()
         {
-            var numberOfTreesEncountered = _xmasTreeMapService.CountTrees();
+            var numberOfTreesEncountered = _xmasTreeMapService.CountTrees(3,1);
             Console.WriteLine($"Number of trees encountered: {numberOfTreesEncountered}");
         }
     }
