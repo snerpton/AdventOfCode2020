@@ -5,30 +5,30 @@ using System.Linq;
 namespace AdventOfCode2020.Day4
 {
     public static class PassportParser
-    {   
-        public static Passport Parse(string passportString)
+    {
+        public static Passport ParseSinglePassport(string passport)
         {
-            if (string.IsNullOrWhiteSpace(passportString))
-                throw new ArgumentOutOfRangeException(nameof(passportString));
+            if (string.IsNullOrWhiteSpace(passport))
+                throw new ArgumentOutOfRangeException(nameof(passport));
 
-            var passportStringLines = passportString.Split(new string[] {"\r\n", "\r", "\n"}, StringSplitOptions.None);
+            var passportStringLines = passport.Split(new string[] {"\r\n", "\r", "\n"}, StringSplitOptions.None);
             if (passportStringLines.Any(line => string.IsNullOrWhiteSpace(line)))
-                throw new ArgumentOutOfRangeException(nameof(passportString));
+                throw new ArgumentOutOfRangeException(nameof(passport));
 
 
             var passportKeyValues =
-                passportString.Split(new[] {" ", "\r\n", "\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
+                passport.Split(new[] {" ", "\r\n", "\r", "\n"}, StringSplitOptions.RemoveEmptyEntries);
 
             
             if (passportKeyValues.Any(keyValue => ValidateKeyValue(keyValue) == false))
-                throw new ArgumentOutOfRangeException(nameof(passportString));
+                throw new ArgumentOutOfRangeException(nameof(passport));
            
 
-            var passport = new Passport();
+            var passportToRtn = new Passport();
             foreach (var keyValue in passportKeyValues)
-                MapKeyValue(keyValue, ref passport);
+                MapKeyValue(keyValue, ref passportToRtn);
 
-            return passport;
+            return passportToRtn;
         }
 
         private static bool ValidateKeyValue(string keyValue)

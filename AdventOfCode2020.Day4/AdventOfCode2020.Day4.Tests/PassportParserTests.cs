@@ -14,7 +14,7 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase(" ")]
         public void Should_ThrowException_WhenNullOrWhitespace(string passportAsString)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.Parse(passportAsString));
+            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.ParseSinglePassport(passportAsString));
         }
         
         [Test]
@@ -25,7 +25,7 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var passportWithEmptyLine = _validPassportAsString + newLine;
 
-            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.Parse(passportWithEmptyLine));
+            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.ParseSinglePassport(passportWithEmptyLine));
         }
         
         [Test]
@@ -37,7 +37,7 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var passportWithInvalidKey = _validPassportAsString + " " + keyValue;
             
-            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.Parse(passportWithInvalidKey));
+            Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.ParseSinglePassport(passportWithInvalidKey));
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var expected = "aaa";
             var validPassport = $"ecl:{expected} pid:{expected} eyr:{expected} hcl:{expected} byr:{expected} iyr:{expected} cid:{expected} hgt:{expected}";
-            var result = PassportParser.Parse(validPassport);
+            var result = PassportParser.ParseSinglePassport(validPassport);
             
             Assert.That(result.BirthYear == expected, $"Birth Year was {result.BirthYear} but expected {expected}");
             Assert.That(result.CountryId == expected, $"Country Id was {result.CountryId} but expected {expected}");
