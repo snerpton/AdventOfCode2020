@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace AdventOfCode2020.Day4
 {
@@ -36,7 +37,22 @@ namespace AdventOfCode2020.Day4
             return true;
         }
 
-        private static bool ValidateBirthYear(string passportBirthYear) => !string.IsNullOrWhiteSpace(passportBirthYear);
+        private static bool ValidateBirthYear(string passportBirthYear)
+        {
+            if (string.IsNullOrWhiteSpace(passportBirthYear))
+                return false;
+            
+            if (passportBirthYear.Length != 4)
+                return false;
+            
+            if (int.TryParse(passportBirthYear, out var birthYear) == false)
+                return false;
+
+            if (birthYear < 1920 || birthYear > 2002)
+                return false;
+            
+            return true;
+        }
 
         private static bool ValidateCountryId(string passportCountryId)
         {

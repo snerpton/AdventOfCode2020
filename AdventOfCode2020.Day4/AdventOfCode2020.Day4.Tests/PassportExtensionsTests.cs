@@ -17,6 +17,8 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("1919")]
+        [TestCase("2003")]
         public void Should_ReturnFalse_When_InvalidBirthYear(string birthYear)
         {
             var sut = new Passport
@@ -42,7 +44,7 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = "1920",
                 CountryId = countryId,
                 ExpirationYear = "aaa",
                 EyeColor = "aaa",
@@ -63,7 +65,7 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = "1920",
                 CountryId = "aaa",
                 ExpirationYear = expirationYear,
                 EyeColor = "aaa",
@@ -182,8 +184,10 @@ namespace AdventOfCode2020.Day4.Tests
         }
         
         [Test]
-        [TestCase("a","a", "a","a","a","a","a","a")]
-        [TestCase("a",null, "a","a","a","a","a","a")]
+        [TestCase("1920","a", "a","a","a","a","a","a")]
+        [TestCase("1920",null, "a","a","a","a","a","a")]
+        [TestCase("1920",null, "a","a","a","a","a","a")]
+        [TestCase("2002",null, "a","a","a","a","a","a")]
         public void Should_ReturnTrue_When_ValidPassport(string birthYear, string countryId, string expirationYear,
             string eyeColour, string height, string hairColour, string issueYear, string passportId)
         {
