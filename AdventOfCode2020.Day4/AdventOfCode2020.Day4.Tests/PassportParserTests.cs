@@ -43,17 +43,18 @@ namespace AdventOfCode2020.Day4.Tests
         [Test]
         public void Should_CreatePassword()
         {
-            var validPassport = "ecl:aaa pid:aaa eyr:aaa hcl:aaa byr:aaa iyr:aaa cid:aaa hgt:aaa";
-            var result = PassportParser.Parse(validPassport );
+            var expected = "aaa";
+            var validPassport = $"ecl:{expected} pid:{expected} eyr:{expected} hcl:{expected} byr:{expected} iyr:{expected} cid:{expected} hgt:{expected}";
+            var result = PassportParser.Parse(validPassport);
             
-            Assert.That(result.BirthYear == "aaa");
-            Assert.That(result.CountryId == "aaa");
-            Assert.That(result.ExpirationYear == "aaa");
-            Assert.That(result.EyeColor == "aaa");
-            Assert.That(result.HairColor == "aaa");
-            Assert.That(result.Height == "aaa");
-            Assert.That(result.IssueYear == "aaa");
-            Assert.That(result.PassportId == "aaa");
+            Assert.That(result.BirthYear == expected, $"Birth Year was {result.BirthYear} but expected {expected}");
+            Assert.That(result.CountryId == expected, $"Country Id was {result.CountryId} but expected {expected}");
+            Assert.That(result.ExpirationYear == expected, $"Expiration Year was {result.ExpirationYear} but expected {expected}");
+            Assert.That(result.EyeColor == expected, $"EyeColor was {result.EyeColor} but expected {expected}");
+            Assert.That(result.HairColor == expected, $"HairColor was {result.HairColor} but expected {expected}");
+            Assert.That(result.Height == expected, $"Height was {result.Height} but expected {expected}");
+            Assert.That(result.IssueYear == expected, $"IssueYear was {result.IssueYear} but expected {expected}");
+            Assert.That(result.PassportId == expected, $"Passport Id was {result.PassportId} but expected {expected}");
         }
     }
 }
