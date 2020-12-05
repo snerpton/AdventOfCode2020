@@ -1,10 +1,55 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace AdventOfCode2020.Day4.Tests
 {
     public class PassportParserTests
     {
+        public class ParseTests
+        {
+            [Test]
+            public void Should_ThrowException_When_PassportEntryNull()
+            {
+                Assert.Throws<ArgumentNullException>(() => PassportParser.Parse(null));
+            }
+            
+            [Test]
+            public void Should_ReturnEmptyCollection_When_PassportEntryEmpty()
+            {
+                var actualPassportCollection = 
+                    PassportParser.Parse(Enumerable.Empty<string>().ToArray());
+                
+                Assert.That(!actualPassportCollection.Any());
+            }
+
+            [Test]
+            public void Should_ReturnTwoPassports_When_TwoValidPassportStringProvided()
+            {
+                var validPassports = new []
+                {
+                    "ecl:aaa pid:aaa eyr:aaa hcl:aaa" + "byr:aaa iyr:aaa cid:aaa hgt:aaa",
+                    "ecl:aaa pid:aaa eyr:aaa hcl:aaa" + "byr:aaa iyr:aaa cid:aaa hgt:aaa"
+                };
+                var sut = PassportParser.Parse(validPassports);
+                
+                Assert.That(sut.Count() == validPassports.Count());
+            }
+            
+            public void Should_ReturnOnePassports_When_OneOfTwoValidPassportStringProvided()
+            {
+                var validPassports = new []
+                {
+                    "ecl:aaa pid:aaa eyr:aaa hcl:aaa" + "byr:aaa iyr:aaa cid:aaa hgt:aaa",
+                    "AAA:aaa pid:aaa eyr:aaa hcl:aaa" + "byr:aaa iyr:aaa cid:aaa hgt:aaa"
+                };
+                var sut = PassportParser.Parse(validPassports);
+                
+                Assert.That(sut.Count() == validPassports.Count());
+            }
+        }
+        
         public class ParseSinglePassportTests
         {
             private readonly string _validPassportAsString =
