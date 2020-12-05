@@ -6,6 +6,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 
 - Use .Net 5 / and latest versions of C#
 - Use Visual Studio for Mac and Rider
+- TDD with `decent` code coverage
 
 
 ## Project Notes
@@ -109,3 +110,32 @@ More information about Advent of Code can be found at https://adventofcode.com/2
  - As a one-off we should also treat the `cid` as optional, and hence allow North Pole Credentials to be used like a passport i.e passport 3 should be treated as apassport even though it is a North Pole Credential
  - Requirement: how many passports are valid there? 
  
+ 
+ 
+## Day 5
+ 
+- Your airline you are using to fly to the tropical island identifies your seat using a `binary space partition` map where:
+
+  - `F` indicates front
+  - `B` indicates back
+  - `L` indicates left
+  - `R` indicates
+  
+ - First 7 characters of your sead number will be either `F` or `B`, and the final 3 `L` or `R` where:
+ 
+   - `L` indicates left
+   - `R` indicates right
+   
+ - First 7 characters describe which row of 0- 128 you are in.
+ - Last 3 characters describe which column of 0-7 you are in.
+ - Seat ID is calculated by (row x 8 + col)
+ - Example boarding passes are:
+ 
+ Here are some other boarding passes:
+ 
+   - `FBFBBFFRLR`: row 44, column 5, seat ID (44 * 8 + 5) = 357
+   - `BFFFBBFRRR`: row 70, column 7, seat ID 567.
+   - `FFFBBBFRRR`: row 14, column 7, seat ID 119.
+   - `BBFFBBFRLL`: row 102, column 4, seat ID 820.
+ 
+ - Requirement: What is the highest seat ID on a boarding pass (puzzle input)?
