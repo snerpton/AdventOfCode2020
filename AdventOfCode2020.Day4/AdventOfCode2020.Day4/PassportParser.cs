@@ -8,7 +8,23 @@ namespace AdventOfCode2020.Day4
     {
         public static IEnumerable<Passport> Parse(string[] passports)
         {
-            throw new NotImplementedException();
+            if (passports == null)
+                throw new ArgumentNullException(nameof(passports));
+            
+            var passportsToRtn = new List<Passport>();
+            foreach (var passport in passports)
+            {
+                try
+                {
+                    passportsToRtn.Add(ParseSinglePassport(passport));
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+
+            return passportsToRtn;
         }
         
         public static Passport ParseSinglePassport(string passport)
@@ -46,7 +62,7 @@ namespace AdventOfCode2020.Day4
                 var passport = new Passport();
                 MapKeyValue(keyValue, ref passport);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }

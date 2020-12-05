@@ -37,6 +37,7 @@ namespace AdventOfCode2020.Day4.Tests
                 Assert.That(sut.Count() == validPassports.Count());
             }
             
+            [Test]
             public void Should_ReturnOnePassports_When_OneOfTwoValidPassportStringProvided()
             {
                 var validPassports = new []
@@ -46,7 +47,7 @@ namespace AdventOfCode2020.Day4.Tests
                 };
                 var sut = PassportParser.Parse(validPassports);
                 
-                Assert.That(sut.Count() == validPassports.Count());
+                Assert.That(sut.Count() == 1);
             }
         }
         
