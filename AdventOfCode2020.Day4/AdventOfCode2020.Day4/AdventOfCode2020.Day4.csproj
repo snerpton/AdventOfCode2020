@@ -6,9 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Content Include="..\..\ReadMe.md">
-        <Link>ReadMe.md</Link>
-      </Content>
       <None Remove="Assets\Day3PuzzleInputPassports.txt" />
       <Content Include="Assets\Day3PuzzleInputPassports.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>

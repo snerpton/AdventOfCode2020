@@ -4,6 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day4", "Ad
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day4.Tests", "AdventOfCode2020.Day4.Tests\AdventOfCode2020.Day4.Tests.csproj", "{40B87FBD-5964-4647-8A49-E5A069878148}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57F6024B-1588-4B94-8549-A310510D5FC2}"
+ProjectSection(SolutionItems) = preProject
+	..\ReadMe.md = ..\ReadMe.md
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

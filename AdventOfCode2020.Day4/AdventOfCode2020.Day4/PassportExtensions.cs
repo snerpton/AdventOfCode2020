@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 namespace AdventOfCode2020.Day4
@@ -90,6 +89,28 @@ namespace AdventOfCode2020.Day4
             return true;
         }
 
+        private static bool ValidateHairColor(string passportHairColor)
+        {
+            if (string.IsNullOrWhiteSpace(passportHairColor))
+                return false;
+
+            if (passportHairColor[0] != '#')
+                return false;
+
+            passportHairColor = passportHairColor.Replace("#", "");
+            if (passportHairColor.Length != 6)
+                return false;
+            
+            var validChars = new[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+            foreach (var character in passportHairColor)
+            {
+                if (validChars.Contains(character) == false)
+                    return false;
+            }
+
+            return true;
+        }    
+        
         private static bool ValidateHeight(string height)
         {
             if (string.IsNullOrWhiteSpace(height))
@@ -110,28 +131,6 @@ namespace AdventOfCode2020.Day4
             else
             {
                 return false;
-            }
-
-            return true;
-        }
-
-        private static bool ValidateHairColor(string passportHairColor)
-        {
-            if (string.IsNullOrWhiteSpace(passportHairColor))
-                return false;
-
-            if (passportHairColor[0] != '#')
-                return false;
-
-            passportHairColor = passportHairColor.Replace("#", "");
-            if (passportHairColor.Length != 6)
-                return false;
-            
-            var validChars = new[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-            foreach (var character in passportHairColor)
-            {
-                if (validChars.Contains(character) == false)
-                    return false;
             }
 
             return true;

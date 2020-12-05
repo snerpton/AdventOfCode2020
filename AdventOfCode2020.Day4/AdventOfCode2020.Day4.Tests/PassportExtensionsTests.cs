@@ -6,6 +6,7 @@ namespace AdventOfCode2020.Day4.Tests
     public class PassportExtensionsTests
     {
         private string _validBirthYear = "1920";
+        private string _validCountryId = "aaa";
         private string _validExpirationYear = "2020";
         private string _validEyeColor = "amb";
         private string _validHairColor = "#123abc";
@@ -27,12 +28,14 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase(null)]
         [TestCase("1919")]
         [TestCase("2003")]
+        [TestCase("111")]
+        [TestCase("aaaa")]
         public void Should_ReturnFalse_When_InvalidBirthYear(string birthYear)
         {
             var sut = new Passport
             {
                 BirthYear = birthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = _validEyeColor,
                 Height = _validHeight,
@@ -71,12 +74,14 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase(null)]
         [TestCase("2019")]
         [TestCase("2031")]
+        [TestCase("111")]
+        [TestCase("aaaa")]
         public void Should_ReturnFalse_When_InvalidExpirationYear(string expirationYear)
         {
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = expirationYear,
                 EyeColor = _validEyeColor,
                 Height = _validHeight,
@@ -92,12 +97,13 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("aaa")]
         public void Should_ReturnFalse_When_InvalidEyeColor(string eyeColor)
         {
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = eyeColor,
                 Height = _validHeight,
@@ -117,12 +123,13 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("194cm")]
         [TestCase("58in")]
         [TestCase("77in")]
+        [TestCase("60ft")]
         public void Should_ReturnFalse_When_InvalidHeight(string height)
         {
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = _validEyeColor,
                 Height = height,
@@ -140,13 +147,13 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase(null)]
         [TestCase("aabbcc")]
         [TestCase("#aabbc")]
-        [TestCase("#aabbg")]
+        [TestCase("#aabbcg")]
         public void Should_ReturnFalse_When_InvalidHairColor(string hairColor)
         {
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = _validEyeColor,
                 Height = _validHeight,
@@ -164,12 +171,14 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase(null)]
         [TestCase("2009")]
         [TestCase("2021")]
+        [TestCase("111")]
+        [TestCase("aaaa")]
         public void Should_ReturnFalse_When_InvalidIssueYear(string issueYear)
         {
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = _validEyeColor,
                 Height = _validHeight,
@@ -193,7 +202,7 @@ namespace AdventOfCode2020.Day4.Tests
             var sut = new Passport
             {
                 BirthYear = _validBirthYear,
-                CountryId = "aaa",
+                CountryId = _validCountryId,
                 ExpirationYear = _validExpirationYear,
                 EyeColor = _validEyeColor,
                 Height = _validHeight,
@@ -227,7 +236,6 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("1920","a", "2020","grn","150cm","#123abc","2010","123456789")]
         [TestCase("1920","a", "2020","hzl","150cm","#123abc","2010","123456789")]
         [TestCase("1920","a", "2020","oth","150cm","#123abc","2010","123456789")]
-        
         public void Should_ReturnTrue_When_ValidPassport(string birthYear, string countryId, string expirationYear,
             string eyeColour, string height, string hairColour, string issueYear, string passportId)
         {
