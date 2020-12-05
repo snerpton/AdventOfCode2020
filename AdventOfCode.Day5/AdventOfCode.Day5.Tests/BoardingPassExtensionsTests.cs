@@ -12,6 +12,23 @@ namespace AdventOfCode.Day5.Tests
             
             Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValidSeat(sut));
         }
+
+        public class IsValidTests
+        {
+            [Test]
+            public void Should_ThrowException_When_NullBoardingPass()
+            {
+                Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValid(null));
+            }
+            
+            [Test]
+            public void Should_ReturnTrue_When_ValidBoardingPass()
+            {
+                var boardingPass = new BoardingPass("FFFFFFFLLL");
+                
+                Assert.That(() => BoardingPassExtensions.IsValid(boardingPass) == true);
+            }
+        }
         
         public class IsValidSeatTests
         {

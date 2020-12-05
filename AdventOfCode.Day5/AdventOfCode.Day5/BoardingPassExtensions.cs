@@ -17,6 +17,14 @@ namespace AdventOfCode.Day5
             throw new NotImplementedException();
         }
 
+        public static bool IsValid(BoardingPass boardingPass)
+        {
+            if (boardingPass == null)
+                throw new ArgumentNullException(nameof(boardingPass));
+
+            return IsValidSeat(boardingPass.Seat);
+        }
+
         public static bool IsValidSeat(string boardingPass)
         { 
             if (boardingPass == null)
