@@ -13,6 +13,8 @@ namespace AdventOfCode.Day5
         private static readonly int SeatStringRowStartIndex = 0;
         private static int _colIndexMin = 0;
         private static int _colIndexMax = 7;
+        private static int _rowIndexMin = 0;
+        private static int _rowIndexMax = 127;
         
         public static int Column(this IBoardingPass boardingPass)
         {
@@ -57,9 +59,15 @@ namespace AdventOfCode.Day5
 
         public static int Row(this IBoardingPass boardingPass)
         {
-            throw new NotImplementedException();
-        }
+            if (boardingPass == null)
+                throw new ArgumentNullException(nameof(boardingPass));
 
+            if (boardingPass.IsValid() == false)
+                throw new ArgumentException(nameof(boardingPass));
+
+            return CalculateRowPosition(boardingPass);
+        }
+        
         public static int SeatId(this IBoardingPass boardingPass)
         {
             throw new NotImplementedException();
@@ -86,6 +94,23 @@ namespace AdventOfCode.Day5
             }
 
             return colIndexMin; // min and max should be equal at this point.
+        }
+        
+        private static int CalculateRowPosition(IBoardingPass boardingPass)
+        {
+            var rowString = RowStringFromSeat(boardingPass.Seat);
+            var rowIndexMin = _rowIndexMin;
+            var rowIndexMax = _rowIndexMax;
+            foreach (var rowChar in rowString)
+            {
+                if (rowChar == 'B')
+                    BinarySpacePartitioning(ref rowIndexMin, ref rowIndexMax, BinarySpacePartitioningAction.Up);
+                
+                if (rowChar == 'F')
+                    BinarySpacePartitioning(ref rowIndexMin, ref rowIndexMax, BinarySpacePartitioningAction.Down);
+            }
+
+            return rowIndexMin; // min and max should be equal at this point.
         }
 
         private enum BinarySpacePartitioningAction
