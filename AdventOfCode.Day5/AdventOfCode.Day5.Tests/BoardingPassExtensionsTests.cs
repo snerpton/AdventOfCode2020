@@ -184,7 +184,7 @@ namespace AdventOfCode.Day5.Tests
             {
                 var sut = new BoardingPass(seat);
                 
-                Assert.That(sut.Row() == expectedRowPosition);
+                Assert.That(sut.SeatId() == expectedRowPosition);
             }
         }
     }

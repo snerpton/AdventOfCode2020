@@ -70,7 +70,14 @@ namespace AdventOfCode.Day5
         
         public static int SeatId(this IBoardingPass boardingPass)
         {
-            throw new NotImplementedException();
+            if (boardingPass == null)
+                throw new ArgumentNullException(nameof(boardingPass));
+
+            if (boardingPass.IsValid() == false)
+                throw new ArgumentException(nameof(boardingPass));
+            
+            // (row x 8) + col
+            return (Row(boardingPass) * 8) + Column(boardingPass);
         }
 
         private static string ColStringFromSeat(string boardingPass) =>
