@@ -12,7 +12,7 @@ namespace AdventOfCode2020.Day4.Tests
             [Test]
             public void Should_ThrowException_When_PassportEntryNull()
             {
-                Assert.Throws<ArgumentNullException>(() => PassportParser.Parse(null));
+                Assert.Throws<ArgumentNullException>(() => PassportParser.Parse((string[]) null));
             }
             
             [Test]
@@ -62,7 +62,7 @@ namespace AdventOfCode2020.Day4.Tests
             [TestCase(" ")]
             public void Should_ThrowException_WhenNullOrWhitespace(string passportAsString)
             {
-                Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.ParseSinglePassport(passportAsString));
+                Assert.Throws<ArgumentOutOfRangeException>(() => PassportParser.Parse(passportAsString));
             }
 
             [Test]
@@ -74,7 +74,7 @@ namespace AdventOfCode2020.Day4.Tests
                 var passportWithEmptyLine = _validPassportAsString + newLine;
 
                 Assert.Throws<ArgumentOutOfRangeException>(() =>
-                    PassportParser.ParseSinglePassport(passportWithEmptyLine));
+                    PassportParser.Parse(passportWithEmptyLine));
             }
 
             [Test]
@@ -87,7 +87,7 @@ namespace AdventOfCode2020.Day4.Tests
                 var passportWithInvalidKey = _validPassportAsString + " " + keyValue;
 
                 Assert.Throws<ArgumentOutOfRangeException>(() =>
-                    PassportParser.ParseSinglePassport(passportWithInvalidKey));
+                    PassportParser.Parse(passportWithInvalidKey));
             }
             
             // [Test]
@@ -105,7 +105,7 @@ namespace AdventOfCode2020.Day4.Tests
                 var expected = "aaa";
                 var validPassport =
                     $"ecl:{expected} pid:{expected} eyr:{expected} hcl:{expected} byr:{expected} iyr:{expected} cid:{expected} hgt:{expected}";
-                var result = PassportParser.ParseSinglePassport(validPassport);
+                var result = PassportParser.Parse(validPassport);
 
                 Assert.That(result.BirthYear == expected, $"Birth Year was {result.BirthYear} but expected {expected}");
                 Assert.That(result.CountryId == expected, $"Country Id was {result.CountryId} but expected {expected}");

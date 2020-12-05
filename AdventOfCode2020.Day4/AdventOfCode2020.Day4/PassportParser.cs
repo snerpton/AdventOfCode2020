@@ -16,7 +16,7 @@ namespace AdventOfCode2020.Day4
             {
                 try
                 {
-                    passportsToRtn.Add(ParseSinglePassport(passport));
+                    passportsToRtn.Add(Parse(passport));
                 }
                 catch (Exception)
                 {
@@ -27,7 +27,7 @@ namespace AdventOfCode2020.Day4
             return passportsToRtn;
         }
         
-        public static Passport ParseSinglePassport(string passport)
+        public static Passport Parse(string passport)
         {
             if (string.IsNullOrWhiteSpace(passport))
                 throw new ArgumentOutOfRangeException(nameof(passport));
