@@ -7,6 +7,8 @@ ProjectSection(SolutionItems) = preProject
 	..\ReadMe.md = ..\ReadMe.md
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day5.Tests", "AdventOfCode.Day5.Tests\AdventOfCode.Day5.Tests.csproj", "{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,5 +19,9 @@ Global
 		{BA7A3642-FEAA-42D3-828F-1CE719362328}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA7A3642-FEAA-42D3-828F-1CE719362328}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA7A3642-FEAA-42D3-828F-1CE719362328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -4,12 +4,17 @@ namespace AdventOfCode.Day5
 {
     public class BoardingPass
     {
-        public string Seat { get; set; }
+        public BoardingPass(string seat)
+        {
+            throw new NotImplementedException();
+        }
+        
+        public string Seat { get; private set; }
     }
 
     public static class BoardingPassExtensions
     {
-        public static int Column(this BoardingPass boardingPass)
+        public static int Column(this string boardingPass)
         {
             throw new NotImplementedException();
         }
