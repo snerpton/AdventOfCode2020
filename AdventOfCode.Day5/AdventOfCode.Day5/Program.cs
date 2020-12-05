@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,6 +24,21 @@ namespace AdventOfCode.Day5
             var highestSeatId = boardingPass.Max(x => x.SeatId());
             
             Console.WriteLine($"Highest  Seat ID: {highestSeatId}");
+
+            var orderedBoardingPass = boardingPass.OrderBy(p => p.SeatId());
+            var unoccupiedSeatIds = new List<int>();
+            
+            for (var index=0; index<orderedBoardingPass.Count(); index++)
+            {
+                if (index > 0 && orderedBoardingPass.ElementAt(index).SeatId() -1 != orderedBoardingPass.ElementAt(index-1).SeatId())
+                    unoccupiedSeatIds.Add(orderedBoardingPass.ElementAt(index).SeatId()-1);
+            }
+
+            Console.WriteLine("Unoccupied seats have the following Seat IDs:");
+            foreach (var seatId in unoccupiedSeatIds)
+            {
+                Console.WriteLine(seatId);
+            }
         }
     }
 }

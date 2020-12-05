@@ -147,3 +147,13 @@ More information about Advent of Code can be found at https://adventofcode.com/2
    - `BBFFBBFRLL`: row 102, column 4, seat ID 820.
  
  - Requirement: What is the highest seat ID on a boarding pass (puzzle input)?
+ 
+ ### Part 2
+ 
+ - Boarding pass list missing items from front and back as these seats don't exist on this plane.
+ - Occupied seats is continuous apart from where I'm sitting (ID+1 and -1 will be in my list).
+ - Requirement: what is my seat ID?
+ 
+ My thinking:
+ - Seat ID is effectively seat number as `SeatID = row x 8 + col` where `8` is number of seats in row. This means it should be continuous, apart from a block at the start and end we are told is missing. We are also told our seat ±1 is occupied, so we are looking for unoccupied seats... turns out there is only 1 unoccupied seat, so this must be ours.
+  
