@@ -180,5 +180,25 @@ namespace AdventOfCode2020.Day4.Tests
             
             Assert.That(sut.Validate() == false);
         }
+        
+        [Test]
+        [TestCase("a","a", "a","a","a","a","a","a")]
+        public void Should_ReturnTrue_When_ValidPassport(string birthYear, string countryId, string expirationYear,
+            string eyeColour, string height, string hairColour, string issueYear, string passportId)
+        {
+            var sut = new Passport
+            {
+                BirthYear = birthYear,
+                CountryId = countryId,
+                ExpirationYear = expirationYear,
+                EyeColor = eyeColour,
+                Height = height,
+                HairColor = hairColour,
+                IssueYear = issueYear,
+                PassportId = passportId
+            };
+            
+            Assert.That(sut.Validate() == true);
+        }
     }
 }
