@@ -1,4 +1,5 @@
 using System;
+using Moq;
 using NUnit.Framework;
 
 namespace AdventOfCode.Day5.Tests
@@ -13,6 +14,41 @@ namespace AdventOfCode.Day5.Tests
             Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValidSeat(sut));
         }
 
+        public class ColumnTests
+        {
+            [Test]
+            public void Should_ThrowException_When_NullBoardingPass()
+            {
+                BoardingPass sut = null; 
+                
+                Assert.Throws<ArgumentNullException>(() => sut.Column());
+            }
+            
+            [Test]
+            [TestCase("FFFFFFFXXX")]
+            [TestCase("XXXXXXXLLL")]
+            [TestCase("aaa")]
+            public void Should_ThrowException_When_InValidSeat(string seat)
+            {
+                var mockBoardingPass = new Mock<IBoardingPass>();
+                mockBoardingPass.SetupGet(m => m.Seat).Returns(seat);
+
+                Assert.Throws<ArgumentException>(() => BoardingPassExtensions.Column(mockBoardingPass.Object));
+            }
+            
+            [Test]
+            [TestCase("FBFBBFFRLR", 5)]
+            [TestCase("BFFFBBFRRR", 7)]
+            [TestCase("FFFBBBFRRR", 7)]
+            [TestCase("BBFFBBFRLL", 4)]
+            public void Should_ReturnCol_When_SeatIsValid(string seat, int expectedColPosition)
+            {
+                var sut = new BoardingPass(seat);
+                
+                Assert.That(sut.Column() == expectedColPosition);
+            }
+        }
+        
         public class IsValidTests
         {
             [Test]

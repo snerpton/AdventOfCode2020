@@ -2,7 +2,12 @@ using System;
 
 namespace AdventOfCode.Day5
 {
-    public class BoardingPass
+    public interface IBoardingPass
+    {
+        string Seat { get; }
+    }
+
+    public class BoardingPass : IBoardingPass
     {
         public BoardingPass(string seat)
         {

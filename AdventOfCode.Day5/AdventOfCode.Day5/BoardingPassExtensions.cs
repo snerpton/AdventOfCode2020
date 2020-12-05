@@ -12,12 +12,18 @@ namespace AdventOfCode.Day5
         private static readonly int ColCharStartIndexInSeat = 7;
         private static readonly int RowCharStartIndexInSeat = 0;
         
-        public static int Column(this string boardingPass)
+        public static int Column(this IBoardingPass boardingPass)
         {
+            if (boardingPass == null)
+                throw new ArgumentNullException(nameof(boardingPass));
+
+            if (boardingPass.IsValid() == false)
+                throw new ArgumentException(nameof(boardingPass));
+            
             throw new NotImplementedException();
         }
 
-        public static bool IsValid(BoardingPass boardingPass)
+        public static bool IsValid(this IBoardingPass boardingPass)
         {
             if (boardingPass == null)
                 throw new ArgumentNullException(nameof(boardingPass));
@@ -47,12 +53,12 @@ namespace AdventOfCode.Day5
             return true;
         }
 
-        public static int Row(this BoardingPass boardingPass)
+        public static int Row(this IBoardingPass boardingPass)
         {
             throw new NotImplementedException();
         }
 
-        public static int SeatId(this BoardingPass boardingPass)
+        public static int SeatId(this IBoardingPass boardingPass)
         {
             throw new NotImplementedException();
         }
