@@ -6,6 +6,11 @@ namespace AdventOfCode2020.Day4
 {
     public static class PassportParser
     {
+        public static IEnumerable<Passport> Parse(string[] passports)
+        {
+            throw new NotImplementedException();
+        }
+        
         public static Passport ParseSinglePassport(string passport)
         {
             if (string.IsNullOrWhiteSpace(passport))
