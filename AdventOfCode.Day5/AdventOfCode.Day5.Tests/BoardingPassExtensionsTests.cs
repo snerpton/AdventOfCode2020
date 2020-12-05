@@ -152,5 +152,40 @@ namespace AdventOfCode.Day5.Tests
                 Assert.That(BoardingPassExtensions.IsValidSeat(seat) == true);
             }  
         }
+
+        public class SeatIdTests
+        {
+            [Test]
+            public void Should_ThrowException_When_NullBoardingPass()
+            {
+                BoardingPass sut = null; 
+                
+                Assert.Throws<ArgumentNullException>(() => sut.SeatId());
+            }
+            
+            [Test]
+            [TestCase("FFFFFFFXXX")]
+            [TestCase("XXXXXXXLLL")]
+            [TestCase("aaa")]
+            public void Should_ThrowException_When_InValidSeat(string seat)
+            {
+                var mockBoardingPass = new Mock<IBoardingPass>();
+                mockBoardingPass.SetupGet(m => m.Seat).Returns(seat);
+
+                Assert.Throws<ArgumentException>(() => BoardingPassExtensions.SeatId(mockBoardingPass.Object));
+            }
+            
+            [Test]
+            [TestCase("FBFBBFFRLR", 357)]
+            [TestCase("BFFFBBFRRR", 567)]
+            [TestCase("FFFBBBFRRR", 119)]
+            [TestCase("BBFFBBFRLL", 820)]
+            public void Should_ReturnRow_When_SeatIsValid(string seat, int expectedRowPosition)
+            {
+                var sut = new BoardingPass(seat);
+                
+                Assert.That(sut.Row() == expectedRowPosition);
+            }
+        }
     }
 }
