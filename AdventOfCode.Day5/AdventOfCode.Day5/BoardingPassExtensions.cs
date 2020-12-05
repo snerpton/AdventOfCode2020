@@ -7,10 +7,12 @@ namespace AdventOfCode.Day5
     {
         private static readonly char[] ValidColChars = {'L', 'R'};
         private static readonly char[] ValidRowChars = {'F', 'B'};
-        private static readonly int NumberCharsInColDescription = 3;
-        private static readonly int NumberCharsInRowDescription = 7;
-        private static readonly int ColCharStartIndexInSeat = 7;
-        private static readonly int RowCharStartIndexInSeat = 0;
+        private static readonly int SeatStringNumberCharsForCol = 3;
+        private static readonly int SeatStringNumberCharsForRow = 7;
+        private static readonly int SeatStringColStartIndex = 7;
+        private static readonly int SeatStringRowStartIndex = 0;
+        private static int _colIndexMin = 0;
+        private static int _colIndexMax = 7;
         
         public static int Column(this IBoardingPass boardingPass)
         {
@@ -19,10 +21,10 @@ namespace AdventOfCode.Day5
 
             if (boardingPass.IsValid() == false)
                 throw new ArgumentException(nameof(boardingPass));
-            
-            throw new NotImplementedException();
-        }
 
+            return CalculateColumnPosition(boardingPass);
+        }
+        
         public static bool IsValid(this IBoardingPass boardingPass)
         {
             if (boardingPass == null)
@@ -39,7 +41,7 @@ namespace AdventOfCode.Day5
             if (string.IsNullOrWhiteSpace(boardingPass))
                 return false;
 
-            if (boardingPass.Length != NumberCharsInColDescription + NumberCharsInRowDescription)
+            if (boardingPass.Length != SeatStringNumberCharsForCol + SeatStringNumberCharsForRow)
                 return false;
 
             var cols = ColStringFromSeat(boardingPass);
@@ -64,9 +66,47 @@ namespace AdventOfCode.Day5
         }
 
         private static string ColStringFromSeat(string boardingPass) =>
-            boardingPass.Substring(ColCharStartIndexInSeat, NumberCharsInColDescription);
+            boardingPass.Substring(SeatStringColStartIndex, SeatStringNumberCharsForCol);
 
         private static string RowStringFromSeat(string boardingPass) =>
-            boardingPass.Substring(RowCharStartIndexInSeat, NumberCharsInRowDescription);
+            boardingPass.Substring(SeatStringRowStartIndex, SeatStringNumberCharsForRow);
+        
+        private static int CalculateColumnPosition(IBoardingPass boardingPass)
+        {
+            var colString = ColStringFromSeat(boardingPass.Seat);
+            var colIndexMin = _colIndexMin;
+            var colIndexMax = _colIndexMax;
+            foreach (var colChar in colString)
+            {
+                if (colChar == 'R')
+                    BinarySpacePartitioning(ref colIndexMin, ref colIndexMax, BinarySpacePartitioningAction.Up);
+                
+                if (colChar == 'L')
+                    BinarySpacePartitioning(ref colIndexMin, ref colIndexMax, BinarySpacePartitioningAction.Down);
+            }
+
+            return colIndexMin; // min and max should be equal at this point.
+        }
+
+        private enum BinarySpacePartitioningAction
+        {
+            Down,
+            Up
+        }
+        
+        private static void BinarySpacePartitioning(ref int lowerIndex, ref int upperIndex, BinarySpacePartitioningAction action)
+        {
+            switch (action)
+            {
+                case BinarySpacePartitioningAction.Down:
+                    upperIndex = upperIndex - ((upperIndex - lowerIndex + 1) / 2);
+                    break;
+                case BinarySpacePartitioningAction.Up:
+                    lowerIndex = lowerIndex + ((upperIndex - lowerIndex + 1) / 2);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(action), action, null);
+            }
+        }
     }
 }
