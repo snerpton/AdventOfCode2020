@@ -56,8 +56,11 @@ namespace AdventOfCode.Day5
         {
             throw new NotImplementedException();
         }
-        
-        private static string ColStringFromSeat(string boardingPass) => boardingPass.Substring(ColCharStartIndexInSeat, NumberCharsInColDescription);
-        private static string RowStringFromSeat(string boardingPass) => boardingPass.Substring(RowCharStartIndexInSeat, NumberCharsInRowDescription);
+
+        private static string ColStringFromSeat(string boardingPass) =>
+            boardingPass.Substring(ColCharStartIndexInSeat, NumberCharsInColDescription);
+
+        private static string RowStringFromSeat(string boardingPass) =>
+            boardingPass.Substring(RowCharStartIndexInSeat, NumberCharsInRowDescription);
     }
 }

@@ -36,7 +36,15 @@ namespace AdventOfCode.Day5.Tests
             public void Should_ReturnThrowException_When_NullSeat()
             {
                 Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValidSeat(null));
-            } 
+            }
+
+            [Test]
+            [TestCase("")]
+            [TestCase("   ")]
+            public void Should_ReturnFalse_When_SeatIsEmptyString(string seat)
+            {
+                Assert.That(BoardingPassExtensions.IsValidSeat(seat) == false);
+            }
             
             [Test]
             [TestCase("FFFFFFFZLL")]
