@@ -38,7 +38,7 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
-        public void Should_ReturnFalse_When_InvalidCountryId(string countryId)
+        public void Should_ReturnTrue_When_InvalidCountryId(string countryId)
         {
             var sut = new Passport
             {
@@ -52,7 +52,7 @@ namespace AdventOfCode2020.Day4.Tests
                 PassportId = "aaa"
             };
             
-            Assert.That(sut.Validate() == false);
+            Assert.That(sut.Validate() == true);
         }
         
         [Test]
@@ -183,6 +183,7 @@ namespace AdventOfCode2020.Day4.Tests
         
         [Test]
         [TestCase("a","a", "a","a","a","a","a","a")]
+        [TestCase("a",null, "a","a","a","a","a","a")]
         public void Should_ReturnTrue_When_ValidPassport(string birthYear, string countryId, string expirationYear,
             string eyeColour, string height, string hairColour, string issueYear, string passportId)
         {

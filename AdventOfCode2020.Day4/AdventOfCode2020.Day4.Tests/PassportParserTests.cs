@@ -89,6 +89,15 @@ namespace AdventOfCode2020.Day4.Tests
                 Assert.Throws<ArgumentOutOfRangeException>(() =>
                     PassportParser.ParseSinglePassport(passportWithInvalidKey));
             }
+            
+            // [Test]
+            // public void Should_ThrowException_When_Invalid()
+            // {
+            //     var passportWithInvalidKey = _validPassportAsString + " " + keyValue;
+            //
+            //     Assert.Throws<ArgumentOutOfRangeException>(() =>
+            //         PassportParser.ParseSinglePassport(passportWithInvalidKey));
+            // }
 
             [Test]
             public void Should_CreatePassword()

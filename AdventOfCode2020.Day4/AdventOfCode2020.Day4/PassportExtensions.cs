@@ -37,9 +37,13 @@ namespace AdventOfCode2020.Day4
         }
 
         private static bool ValidateBirthYear(string passportBirthYear) => !string.IsNullOrWhiteSpace(passportBirthYear);
-        
-        private static bool ValidateCountryId(string passportCountryId) => !string.IsNullOrWhiteSpace(passportCountryId);
-        
+
+        private static bool ValidateCountryId(string passportCountryId)
+        {
+            //return !string.IsNullOrWhiteSpace(passportCountryId);
+            return true; //as optional to allow North Pole Credentials
+        }
+
         private static bool ValidateExpirationYear(string passportExpirationYear) => !string.IsNullOrWhiteSpace(passportExpirationYear);
         
         private static bool ValidateEyeColor(string passportEyeColor) => !string.IsNullOrWhiteSpace(passportEyeColor);
