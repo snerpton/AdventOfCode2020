@@ -5,6 +5,14 @@ namespace AdventOfCode2020.Day4.Tests
 {
     public class PassportExtensionsTests
     {
+        private string _validBirthYear = "1920";
+        private string _validExpirationYear = "2020";
+        private string _validEyeColor = "amb";
+        private string _validHairColor = "#123abc";
+        private string _validHeight = "150cm";
+        private string _validIssueYear = "2010";
+        private string _validPassportId = "123456789";
+        
         [Test]
         public void Should_ThrowException_When_NullPassport()
         {
@@ -25,12 +33,12 @@ namespace AdventOfCode2020.Day4.Tests
             {
                 BirthYear = birthYear,
                 CountryId = "aaa",
-                ExpirationYear = "aaa",
-                EyeColor = "aaa",
-                Height = "aaa",
-                HairColor = "aaa",
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -44,14 +52,14 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var sut = new Passport
             {
-                BirthYear = "1920",
+                BirthYear = _validBirthYear,
                 CountryId = countryId,
-                ExpirationYear = "aaa",
-                EyeColor = "aaa",
-                Height = "aaa",
-                HairColor = "aaa",
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == true);
@@ -61,18 +69,20 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("2019")]
+        [TestCase("2031")]
         public void Should_ReturnFalse_When_InvalidExpirationYear(string expirationYear)
         {
             var sut = new Passport
             {
-                BirthYear = "1920",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
                 ExpirationYear = expirationYear,
-                EyeColor = "aaa",
-                Height = "aaa",
-                HairColor = "aaa",
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -86,14 +96,14 @@ namespace AdventOfCode2020.Day4.Tests
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
-                ExpirationYear = "2050",
+                ExpirationYear = _validExpirationYear,
                 EyeColor = eyeColor,
-                Height = "aaa",
-                HairColor = "aaa",
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                Height = _validHeight,
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -103,18 +113,22 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("149cm")]
+        [TestCase("194cm")]
+        [TestCase("58in")]
+        [TestCase("77in")]
         public void Should_ReturnFalse_When_InvalidHeight(string height)
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
-                ExpirationYear = "2050",
-                EyeColor = "aaa",
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
                 Height = height,
-                HairColor = "aaa",
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -124,18 +138,21 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("aabbcc")]
+        [TestCase("#aabbc")]
+        [TestCase("#aabbg")]
         public void Should_ReturnFalse_When_InvalidHairColor(string hairColor)
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
-                ExpirationYear = "2050",
-                EyeColor = "aaa",
-                Height = "aaa",
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
                 HairColor = hairColor,
-                IssueYear = "aaa",
-                PassportId = "aaa"
+                IssueYear = _validIssueYear,
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -145,18 +162,20 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("2009")]
+        [TestCase("2021")]
         public void Should_ReturnFalse_When_InvalidIssueYear(string issueYear)
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
-                ExpirationYear = "2050",
-                EyeColor = "aaa",
-                Height = "aaa",
-                HairColor = "aaa",
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
+                HairColor = _validHairColor,
                 IssueYear = issueYear,
-                PassportId = "aaa"
+                PassportId = _validPassportId
             };
             
             Assert.That(sut.Validate() == false);
@@ -166,17 +185,20 @@ namespace AdventOfCode2020.Day4.Tests
         [TestCase("")]
         [TestCase(" ")]
         [TestCase(null)]
+        [TestCase("12345678")]
+        [TestCase("1234567890")]
+        [TestCase("a12345678")]
         public void Should_ReturnFalse_When_InvalidPassportId(string passportId)
         {
             var sut = new Passport
             {
-                BirthYear = "aaa",
+                BirthYear = _validBirthYear,
                 CountryId = "aaa",
-                ExpirationYear = "2050",
-                EyeColor = "aaa",
-                Height = "aaa",
-                HairColor = "aaa",
-                IssueYear = "aaa",
+                ExpirationYear = _validExpirationYear,
+                EyeColor = _validEyeColor,
+                Height = _validHeight,
+                HairColor = _validHairColor,
+                IssueYear = _validIssueYear,
                 PassportId = passportId
             };
             
@@ -184,10 +206,28 @@ namespace AdventOfCode2020.Day4.Tests
         }
         
         [Test]
-        [TestCase("1920","a", "a","a","a","a","a","a")]
-        [TestCase("1920",null, "a","a","a","a","a","a")]
-        [TestCase("1920",null, "a","a","a","a","a","a")]
-        [TestCase("2002",null, "a","a","a","a","a","a")]
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920",null, "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920",null, "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("2002",null, "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2020","123456789")]
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2030","amb","150cm","#123abc","2010","123456789")]
+        
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","amb","193cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","amb","59in","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","amb","76in","#123abc","2010","123456789")]
+       
+        [TestCase("1920","a", "2020","amb","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","blu","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","brn","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","gry","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","grn","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","hzl","150cm","#123abc","2010","123456789")]
+        [TestCase("1920","a", "2020","oth","150cm","#123abc","2010","123456789")]
+        
         public void Should_ReturnTrue_When_ValidPassport(string birthYear, string countryId, string expirationYear,
             string eyeColour, string height, string hairColour, string issueYear, string passportId)
         {

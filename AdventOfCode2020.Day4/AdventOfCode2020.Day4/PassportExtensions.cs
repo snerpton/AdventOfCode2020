@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace AdventOfCode2020.Day4
 {
@@ -60,16 +61,115 @@ namespace AdventOfCode2020.Day4
             return true; //as optional to allow North Pole Credentials
         }
 
-        private static bool ValidateExpirationYear(string passportExpirationYear) => !string.IsNullOrWhiteSpace(passportExpirationYear);
-        
-        private static bool ValidateEyeColor(string passportEyeColor) => !string.IsNullOrWhiteSpace(passportEyeColor);
-        
-        private static bool ValidateHeight(string height) => !string.IsNullOrWhiteSpace(height);
+        private static bool ValidateExpirationYear(string passportExpirationYear)
+        {
+            if (string.IsNullOrWhiteSpace(passportExpirationYear))
+                return false;
+            
+            if (passportExpirationYear.Length != 4)
+                return false;
+            
+            if (int.TryParse(passportExpirationYear, out var issueYear) == false)
+                return false;
 
-        private static bool ValidateHairColor(string passportHairColor) => !string.IsNullOrWhiteSpace(passportHairColor);
-        
-        private static bool ValidateIssueYear(string passportIssueYear) => !string.IsNullOrWhiteSpace(passportIssueYear);
-        
-        private static bool ValidatePassportId(string passportPassportId) => !string.IsNullOrWhiteSpace(passportPassportId);
+            if (issueYear < 2020 || issueYear > 2030)
+                return false;
+            
+            return true;
+        }
+
+        private static bool ValidateEyeColor(string passportEyeColor)
+        {
+            if (string.IsNullOrWhiteSpace(passportEyeColor))
+                return false;
+            
+            var validEyeColour = new [] {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};
+            if (validEyeColour.Contains(passportEyeColor) == false)
+                return false;
+
+            return true;
+        }
+
+        private static bool ValidateHeight(string height)
+        {
+            if (string.IsNullOrWhiteSpace(height))
+                return false;
+
+            if (height.Contains("cm"))
+            {
+                var heightNum = int.Parse(height.Replace("cm", ""));
+                if (heightNum < 150 || heightNum > 193)
+                    return false;
+            }
+            else if (height.Contains("in"))
+            {
+                var heightNum = int.Parse(height.Replace("in", ""));
+                if (heightNum < 59 || heightNum > 76)
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private static bool ValidateHairColor(string passportHairColor)
+        {
+            if (string.IsNullOrWhiteSpace(passportHairColor))
+                return false;
+
+            if (passportHairColor[0] != '#')
+                return false;
+
+            passportHairColor = passportHairColor.Replace("#", "");
+            if (passportHairColor.Length != 6)
+                return false;
+            
+            var validChars = new[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+            foreach (var character in passportHairColor)
+            {
+                if (validChars.Contains(character) == false)
+                    return false;
+            }
+
+            return true;
+        }
+
+        private static bool ValidateIssueYear(string passportIssueYear)
+        {
+            if (string.IsNullOrWhiteSpace(passportIssueYear))
+                return false;
+            
+            if (passportIssueYear.Length != 4)
+                return false;
+            
+            if (int.TryParse(passportIssueYear, out var issueYear) == false)
+                return false;
+
+            if (issueYear < 2010 || issueYear > 2020)
+                return false;
+            
+            return true;
+        }
+
+        private static bool ValidatePassportId(string passportPassportId)
+        {
+            if (string.IsNullOrWhiteSpace(passportPassportId))
+                return false;
+
+            if (passportPassportId.Length != 9)
+                return false;
+
+            var validChars = new char[] {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+            foreach (var character in passportPassportId)
+            {
+                if (validChars.Contains(character) == false)
+                    return false;
+            }
+            
+            return true;
+        }
     }
 }
