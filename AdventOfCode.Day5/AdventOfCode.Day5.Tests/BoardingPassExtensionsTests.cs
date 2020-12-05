@@ -1,42 +1,49 @@
+using System;
 using NUnit.Framework;
 
 namespace AdventOfCode.Day5.Tests
 {
     public class BoardingPassExtensionsTests
     {
-        public class IsValidTests
+        [Test]
+        public void Should_ThrowException_When_NullBoardingPass()
+        {
+            string sut = null;
+            
+            Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValidSeat(sut));
+        }
+        
+        public class IsValidSeatTests
         {
             [Test]
-            [TestCase("ZFFFFFFLLL")]
-            [TestCase("LFFFFFFLLL")]
-            [TestCase(null)]
-            public void Should_ReturnFalse_When_SeatRowContainsInValidCharacters(string seat)
+            public void Should_ReturnThrowException_When_NullSeat()
             {
-                var sut = new BoardingPass(seat);
-                
-                Assert.That(sut.IsValid() == false);
-            }    
+                Assert.Throws<ArgumentNullException>(() => BoardingPassExtensions.IsValidSeat(null));
+            } 
             
             [Test]
             [TestCase("FFFFFFFZLL")]
             [TestCase("FFFFFFFFLL")]
-            [TestCase(null)]
             public void Should_ReturnFalse_When_SeatColContainsInValidCharacters(string seat)
             {
-                var sut = new BoardingPass(seat);
-                
-                Assert.That(sut.IsValid() == false);
+                Assert.That(BoardingPassExtensions.IsValidSeat(seat) == false);
             }    
+            
+            [Test]
+            [TestCase("ZFFFFFFLLL")]
+            [TestCase("LFFFFFFLLL")]
+            public void Should_ReturnFalse_When_SeatRowContainsInValidCharacters(string seat)
+            {
+                Assert.That(BoardingPassExtensions.IsValidSeat(seat) == false);
+            }   
             
             [Test]
             [TestCase("FFFFFFFFLLL")]
             [TestCase("FFFFFFFLLLL")]
-            [TestCase(null)]
+            
             public void Should_ReturnFalse_When_SeatInValidNumberOfCharacters(string seat)
             {
-                var sut = new BoardingPass(seat);
-                
-                Assert.That(sut.IsValid() == false);
+                Assert.That(BoardingPassExtensions.IsValidSeat(seat) == false);
             }   
             
             [Test]
@@ -44,12 +51,9 @@ namespace AdventOfCode.Day5.Tests
             [TestCase("BFFFBBFRRR")]
             [TestCase("FFFBBBFRRR")]
             [TestCase("BBFFBBFRLL")]
-            [TestCase(null)]
             public void Should_ReturnTrue_When_SeatIsValid(string seat)
             {
-                var sut = new BoardingPass(seat);
-                
-                Assert.That(sut.IsValid() == true);
+                Assert.That(BoardingPassExtensions.IsValidSeat(seat) == true);
             }  
         }
     }
