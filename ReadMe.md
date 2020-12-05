@@ -2,11 +2,14 @@
 
 More information about Advent of Code can be found at https://adventofcode.com/2020.
 
+
+
 ## My Aims for Advent of Code 2020
 
 - Use .Net 5 / and latest versions of C#
 - Use Visual Studio for Mac and Rider
 - TDD with `decent` code coverage
+
 
 
 ## Project Notes
@@ -17,6 +20,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 - No currency exchanges deal in stars, so only way to obtain enough stars for deposit is to solve puzzles
 - Need 50 stars to pay for room deposit in 25 days time
 - Two puzzles per day, with each puzzle paying 1 star
+
 
 
 ## Day 1
@@ -35,6 +39,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
   Answer would be 514579 as (1721 + 299) = 2020 and (1721 x 299) = 514579
   
 
+
 ## Day 2
 
 - Password database corrupted
@@ -48,6 +53,8 @@ More information about Advent of Code can be found at https://adventofcode.com/2
   
  - Requirement: How many passwords are valid according to their policies?
  
+ 
+ 
  ### Part 2
  
  - Requirement: password policy of part 1 incorrect, numbers describe positions not occurrence count, such that:
@@ -57,6 +64,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
    
    Exactly one of these positions must contain the specified letter.
   
+   
    
  ## Day 3
  
