@@ -20,7 +20,7 @@ namespace AdventOfCode2020.Day6
             if (groupResponse == null)
                 throw new ArgumentNullException(nameof(groupResponse));
             
-            throw new NotImplementedException();
+            return new string[]{};
         }
     }
 }

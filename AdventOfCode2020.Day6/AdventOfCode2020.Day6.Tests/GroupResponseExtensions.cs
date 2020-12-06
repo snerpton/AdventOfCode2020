@@ -12,5 +12,13 @@ namespace AdventOfCode2020.Day6.Tests
 
             Assert.Throws<ArgumentNullException>(() => sut.QuestionsAnsweredWithYes());
         }
+
+        [Test]
+        public void Should_ReturnEmptyCollection_When_GroupResponseIndividualsResponsesNotPopulated()
+        {
+            var sut = new GroupResponse();
+            
+            Assert.That(sut.QuestionsAnsweredWithYes().Length == 0);
+        }
     }
 }
