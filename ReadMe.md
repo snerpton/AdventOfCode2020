@@ -9,6 +9,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 - Use .Net 5 / and latest versions of C#
 - Use Visual Studio for Mac and Rider
 - TDD with `decent` code coverage
+- No external libraries to solve problem... allowed NUnit and Moq for testing
 
 
 
