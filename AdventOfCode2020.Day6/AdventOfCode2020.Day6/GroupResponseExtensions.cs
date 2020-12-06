@@ -22,9 +22,12 @@ namespace AdventOfCode2020.Day6
             return sb.ToString();
         }
 
-        public static int SumYesResponse(this GroupResponse groupResponse)
+        public static int NumberOfYesToQuestions(this GroupResponse groupResponse)
         {
-            throw new NotImplementedException();
+            if (groupResponse == null)
+                throw new ArgumentNullException(nameof(groupResponse));
+
+            return groupResponse.QuestionsAnsweredWithYes().Length;
         }
     }
 }

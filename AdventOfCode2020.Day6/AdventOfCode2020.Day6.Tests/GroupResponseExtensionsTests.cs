@@ -53,7 +53,25 @@ namespace AdventOfCode2020.Day6.Tests
         {
             GroupResponse sut = null;
 
-            Assert.Throws<ArgumentNullException>(() => sut.SumYesResponse());
+            Assert.Throws<ArgumentNullException>(() => sut.NumberOfYesToQuestions());
+        }
+
+        [Test]
+        [TestCase(new object[]{"acbx", "abcy"}, 5)]
+        [TestCase(new object[]{"abc"}, 3)]
+        [TestCase(new object[]{"a", "b", "c"}, 3)]
+        [TestCase(new object[]{"ab", "ac"}, 3)]
+        [TestCase(new object[]{"a", "a", "a", "a"}, 1)]
+        [TestCase(new object[]{"b"}, 1)]
+        public void Should_CalculateNumberOfYesToAnswers_When_ValidGroupResponse(object[] groupResponseObj, int expectedNumberOfYesToQuestions)
+        {
+            var groupResponse = groupResponseObj.Select(x => x.ToString());
+            var sut = new GroupResponse
+            {
+                IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x))
+            };
+            
+            Assert.That(sut.NumberOfYesToQuestions() == expectedNumberOfYesToQuestions);
         }
     }
 }
