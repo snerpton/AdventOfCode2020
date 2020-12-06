@@ -29,5 +29,13 @@ namespace AdventOfCode2020.Day6
 
             return groupResponse.QuestionsAnsweredWithYes().Length;
         }
+        
+        public static int NumberOfQuestionsEveryoneAnsweredYesTo(this GroupResponse groupResponse)
+        {
+            if (groupResponse == null)
+                throw new ArgumentNullException(nameof(groupResponse));
+            
+            throw new NotImplementedException();
+        }
     }
 }
