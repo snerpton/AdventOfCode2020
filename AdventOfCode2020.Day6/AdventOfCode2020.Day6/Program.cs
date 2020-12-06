@@ -10,7 +10,7 @@ namespace AdventOfCode2020.Day6
             Console.WriteLine("Hello, welcome to Advent of Code 200, Day 6!");
 
             var groupResponses = CustomsAnswersFileParser.ReadFile().ToList();
-            var sumOfNumberOfYesToQuestions = groupResponses.Sum(x => x.NumberOfYesToQuestions());
+            var sumOfNumberOfYesToQuestions = groupResponses.Sum(x => x.NumberOfQuestionsAnyoneAnsweredYesTo());
 
             Console.WriteLine($"Sum of Yes Answers is: {sumOfNumberOfYesToQuestions}");
         }

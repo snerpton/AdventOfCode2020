@@ -22,7 +22,7 @@ namespace AdventOfCode2020.Day6
             return sb.ToString();
         }
 
-        public static int NumberOfYesToQuestions(this GroupResponse groupResponse)
+        public static int NumberOfQuestionsAnyoneAnsweredYesTo(this GroupResponse groupResponse)
         {
             if (groupResponse == null)
                 throw new ArgumentNullException(nameof(groupResponse));

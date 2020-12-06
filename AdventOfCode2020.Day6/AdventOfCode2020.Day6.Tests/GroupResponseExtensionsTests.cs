@@ -46,14 +46,14 @@ namespace AdventOfCode2020.Day6.Tests
         }
     }
 
-    public class SumYesResponseTests
+    public class NumberOfQuestionsAnyoneAnsweredYesToTests
     {
         [Test]
         public void Should_ThrowException_When_NullGroupResponse()
         {
             GroupResponse sut = null;
 
-            Assert.Throws<ArgumentNullException>(() => sut.NumberOfYesToQuestions());
+            Assert.Throws<ArgumentNullException>(() => sut.NumberOfQuestionsAnyoneAnsweredYesTo());
         }
 
         [Test]
@@ -71,7 +71,7 @@ namespace AdventOfCode2020.Day6.Tests
                 IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x)).ToList()
             };
             
-            Assert.That(sut.NumberOfYesToQuestions() == expectedNumberOfYesToQuestions);
+            Assert.That(sut.NumberOfQuestionsAnyoneAnsweredYesTo() == expectedNumberOfYesToQuestions);
         }
     }
 }
