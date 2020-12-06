@@ -5,7 +5,15 @@ namespace AdventOfCode2020.Day6
 {
     public class IndividualsResponse
     {
-        public string[] YesTo { get; set; }
+        public char[] YesTo { get; set; }
+
+        public IndividualsResponse(string yesTo)
+        {
+            if (string.IsNullOrWhiteSpace(yesTo))
+                throw new ArgumentNullException();
+            
+            throw new NotImplementedException();
+        }
     }
 
     public class GroupResponse

@@ -1,9 +1,19 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace AdventOfCode2020.Day6.Tests
 {
-    public class GroupResponseExtensions
+    public class IndividualsResponseTests
+    {
+        [Test]
+        public void Should_ThrowException_When_NullYesTo()
+        {
+            Assert.Throws<ArgumentNullException>(() => new IndividualsResponse(null));
+        }
+    }
+    
+    public class GroupResponseExtensionsTests
     {
         [Test]
         public void Should_ThrowException_When_NullGroupResponse()
