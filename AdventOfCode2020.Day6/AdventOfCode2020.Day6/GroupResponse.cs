@@ -5,6 +5,6 @@ namespace AdventOfCode2020.Day6
 {
     public class GroupResponse
     {
-        public IEnumerable<IndividualsResponse> IndividualsResponses { get; set; } = Enumerable.Empty<IndividualsResponse>();
+        public List<IndividualsResponse> IndividualsResponses { get; set; } = new List<IndividualsResponse>();
     }
 }

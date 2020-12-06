@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace AdventOfCode2020.Day6
 {
@@ -6,7 +7,12 @@ namespace AdventOfCode2020.Day6
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello, welcome to Advent of Code 200, Day 6!");
+
+            var groupResponses = CustomsAnswersFileParser.ReadFile().ToList();
+            var sumOfNumberOfYesToQuestions = groupResponses.Sum(x => x.NumberOfYesToQuestions());
+
+            Console.WriteLine($"Sum of Yes Answers is: {sumOfNumberOfYesToQuestions}");
         }
     }
 }

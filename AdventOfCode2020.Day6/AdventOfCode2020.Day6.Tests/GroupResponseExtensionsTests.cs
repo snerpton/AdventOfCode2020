@@ -37,7 +37,7 @@ namespace AdventOfCode2020.Day6.Tests
             
                 var sut = new GroupResponse
                 {
-                    IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x))
+                    IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x)).ToList()
                 };
         
                 Assert.That(sut.QuestionsAnsweredWithYes() == expectedYesTo,
@@ -68,7 +68,7 @@ namespace AdventOfCode2020.Day6.Tests
             var groupResponse = groupResponseObj.Select(x => x.ToString());
             var sut = new GroupResponse
             {
-                IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x))
+                IndividualsResponses = groupResponse.Select(x => new IndividualsResponse(x)).ToList()
             };
             
             Assert.That(sut.NumberOfYesToQuestions() == expectedNumberOfYesToQuestions);
