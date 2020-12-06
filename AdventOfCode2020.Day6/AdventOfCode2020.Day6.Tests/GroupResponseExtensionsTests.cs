@@ -44,6 +44,16 @@ namespace AdventOfCode2020.Day6.Tests
                     $"Actual ({sut.QuestionsAnsweredWithYes()}) not equal to expected ({expectedYesTo}).");
             }
         }
-        
+    }
+
+    public class SumYesResponseTests
+    {
+        [Test]
+        public void Should_ThrowException_When_NullGroupResponse()
+        {
+            GroupResponse sut = null;
+
+            Assert.Throws<ArgumentNullException>(() => sut.SumYesResponse());
+        }
     }
 }

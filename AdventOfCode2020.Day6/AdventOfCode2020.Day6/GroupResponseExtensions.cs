@@ -21,5 +21,10 @@ namespace AdventOfCode2020.Day6
 
             return sb.ToString();
         }
+
+        public static int SumYesResponse(this GroupResponse groupResponse)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
