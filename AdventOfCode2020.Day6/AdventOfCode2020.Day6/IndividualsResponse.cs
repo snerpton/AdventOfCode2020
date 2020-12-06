@@ -24,7 +24,7 @@ namespace AdventOfCode2020.Day6
         }
 
         private bool ValidateAsUppercase(string letters) =>
-            !letters.Any(l => "abcdefghijklmnopqrstuvwxyz".Contains(l));
+            !letters.Any(l => "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Contains(l));
 
         private bool ValidateNoDuplicates(string letters) => letters.Distinct().Count() == letters.Length;
     }

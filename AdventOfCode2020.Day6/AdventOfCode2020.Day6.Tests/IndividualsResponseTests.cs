@@ -16,24 +16,24 @@ namespace AdventOfCode2020.Day6.Tests
         }
     
         [Test]
-        [TestCase("ABA")]
-        [TestCase("AA")]
+        [TestCase("aba")]
+        [TestCase("aa")]
         public void Should_ThrowException_When_DuplicateYesTo(string yesTo)
         {
             Assert.Throws<ArgumentException>(() => new IndividualsResponse(yesTo));
         }
         
         [Test]
-        public void Should_ThrowException_When_LowercaseYesTo()
+        public void Should_ThrowException_When_UppercaseYesTo()
         {
-            foreach(var letter in "abcdefghijklmnopqrstuvwxyz")
+            foreach(var letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
                 Assert.Throws<ArgumentException>(() => new IndividualsResponse(letter.ToString()));
         }
         
         [Test]
-        [TestCase("ABC", new object[]{'A','B','C'})]
-        [TestCase("ACB", new object[]{'A','B','C'})]
-        [TestCase("ABCXYZ", new object[]{'A','B','C','X','Y','Z'})]
+        [TestCase("abc", new object[]{'a','b','c'})]
+        [TestCase("acb", new object[]{'a','b','c'})]
+        [TestCase("abcxyz", new object[]{'a','b','c','x','y','z'})]
         public void Should_PopulateYesTo_When_ValidYesTo(string yesTo, object[] expectedYesToObj)
         {
             var expectedYesTo = expectedYesToObj.Select(x => x.ToString()[0]).ToArray();
