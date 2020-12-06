@@ -156,4 +156,48 @@ More information about Advent of Code can be found at https://adventofcode.com/2
  
  My thinking:
  - Seat ID is effectively seat number as `SeatID = row x 8 + col` where `8` is number of seats in row. This means it should be continuous, apart from a block at the start and end we are told is missing. We are also told our seat ±1 is occupied, so we are looking for unoccupied seats... turns out there is only 1 unoccupied seat, so this must be ours.
+ 
+ 
+ 
+# Day 6: Custom Customs
+
+- Customs declaration forms have 26 yes/no questions marked a-z.
+- Identify any question a member of your group answers `yes`.
+- Example group og three people might answer:
+
+  - `abcx`
+  - `abcy`
+  - `abcz`
   
+  In this example 6 questions were marked as yes: `a`, `b`, `c`, `x`, `y`, and `z`.
+  
+- Puzzle input is every group on the plane's answers, where each person has their own line, and groups are separated by a blank line.
+- Example:
+
+  ```
+  abc
+  
+  a
+  b
+  c
+  
+  ab
+  ac
+  
+  a
+  a
+  a
+  a
+  
+  b
+  ```
+  
+  where:
+  
+  - The first group contains one person who answered "yes" to 3 questions: a, b, and c.
+  - The second group contains three people; combined, they answered "yes" to 3 questions: a, b, and c.
+  - The third group contains two people; combined, they answered "yes" to 3 questions: a, b, and c.
+  - The fourth group contains four people; combined, they answered "yes" to only 1 question, a.
+  - The last group contains one person who answered "yes" to only 1 question, b.
+  - Sum of `yes` counts is `3 + 3 + 3 + 1 + 1 = 11`
+  - Requirement: for each group count the number of questions to which someone answered yes to, and calculat the sum of those counts.
