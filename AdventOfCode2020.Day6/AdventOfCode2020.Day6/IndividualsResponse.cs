@@ -17,6 +17,9 @@ namespace AdventOfCode2020.Day6
     {
         public static string[] QuestionsAnsweredWithYes(this GroupResponse groupResponse)
         {
+            if (groupResponse == null)
+                throw new ArgumentNullException(nameof(groupResponse));
+            
             throw new NotImplementedException();
         }
     }
