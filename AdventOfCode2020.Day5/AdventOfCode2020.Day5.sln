@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day5", "AdventOfCode.Day5\AdventOfCode.Day5.csproj", "{BA7A3642-FEAA-42D3-828F-1CE719362328}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day5", "AdventOfCode2020.Day5\AdventOfCode2020.Day5.csproj", "{BA7A3642-FEAA-42D3-828F-1CE719362328}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F3B13C1-3375-4046-9F4D-D43816E79107}"
 ProjectSection(SolutionItems) = preProject
 	..\ReadMe.md = ..\ReadMe.md
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode.Day5.Tests", "AdventOfCode.Day5.Tests\AdventOfCode.Day5.Tests.csproj", "{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day5.Tests", "AdventOfCode2020.Day5.Tests\AdventOfCode2020.Day5.Tests.csproj", "{C6D14FCD-C2D4-463E-8AB2-6E982DC7929F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
