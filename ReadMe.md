@@ -202,3 +202,8 @@ More information about Advent of Code can be found at https://adventofcode.com/2
   - The last group contains one person who answered "yes" to only 1 question, b.
   - Sum of `yes` counts is `3 + 3 + 3 + 1 + 1 = 11`
   - Requirement: for each group count the number of questions to which someone answered yes to, and calculat the sum of those counts.
+
+
+
+## Day 7
+

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day7", "AdventOfCode2020.Day7\AdventOfCode2020.Day7.csproj", "{B6025BAD-08F7-4C05-9AEE-318E00666F62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day7.Tests", "AdventOfCode2020.Day7.Tests\AdventOfCode2020.Day7.Tests.csproj", "{86B47607-668C-4413-95D2-84D8EBF1DD9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EEB8FE16-A326-4742-8925-69546DB0114E}"
+ProjectSection(SolutionItems) = preProject
+	..\ReadMe.md = ..\ReadMe.md
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6025BAD-08F7-4C05-9AEE-318E00666F62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6025BAD-08F7-4C05-9AEE-318E00666F62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6025BAD-08F7-4C05-9AEE-318E00666F62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6025BAD-08F7-4C05-9AEE-318E00666F62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B47607-668C-4413-95D2-84D8EBF1DD9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B47607-668C-4413-95D2-84D8EBF1DD9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B47607-668C-4413-95D2-84D8EBF1DD9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B47607-668C-4413-95D2-84D8EBF1DD9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
