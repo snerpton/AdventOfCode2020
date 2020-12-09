@@ -2,17 +2,15 @@ using NUnit.Framework;
 
 namespace AdventOfCode2020.Day7.Tests
 {
-    public class Tests
+    public class BagServiceTests
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
-
         [Test]
-        public void Test1()
+        [TestCase(1, "shiny gold", 4)]
+        public void Should_ReturnNumberOfColoursThatCanEventuallyContainABag_When_BagColourExists(int number, string bagColour, int expectedNumberFound)
         {
-            Assert.Pass();
+            var sut = BagService.FindNumberOfBagsThatEventuallyContain(1, bagColour);
+
+            Assert.That(sut == expectedNumberFound);
         }
     }
 }
