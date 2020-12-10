@@ -28,11 +28,6 @@ namespace AdventOfCode2020.Day7
             
             return rulesContainingBagNotAtRoot.Distinct().Count();
         }
-
-        public int TotalNumberOfBagsContainedIn(string bag)
-        {
-            throw new NotImplementedException();
-        }
         
         private BagTypeRule[] FindRuleContainingBag(string bag)
         {
@@ -46,6 +41,37 @@ namespace AdventOfCode2020.Day7
             }
             
             return runningTotal.ToArray();
+        }
+        
+        public int TotalNumberOfBagsContainedIn(string bag)
+        {
+            if (string.IsNullOrEmpty(bag))
+                throw new ArgumentNullException(nameof(bag));
+            
+            if (_bagRules.Select(rule => rule.Colour).Contains(bag) == false)
+                throw new ArgumentException(nameof(bag),$"Bag colour ({bag}) not found.");
+
+            var rootBags = _bagRules.Where(b => b.Colour == bag);
+            
+            if (!rootBags.Any() || rootBags.Count() > 1)
+                throw new ArgumentOutOfRangeException(nameof(bag));
+
+            var rootBag = rootBags.First();
+
+            var found = FindDescendantBags(rootBag.Colour);
+            return found;
+        }
+
+        private int FindDescendantBags(string bag)
+        {
+            var rootBag = _bagRules.First(b => b.Colour == bag);
+            var total = 0;
+            foreach (var childBag in rootBag.ChildBags)
+            {
+                total = total + childBag.Number + childBag.Number * FindDescendantBags(childBag.Bag);
+            }
+
+            return total;
         }
     }
 }

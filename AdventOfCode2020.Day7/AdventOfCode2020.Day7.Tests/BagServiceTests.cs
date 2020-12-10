@@ -82,6 +82,63 @@ namespace AdventOfCode2020.Day7.Tests
                 ChildBags = new ChildBagRule[] { }
             }
         };
+        
+        public static BagTypeRule[] RulesForPart2Testing = new BagTypeRule[]
+        {
+            new BagTypeRule
+            {
+                Colour = "shiny gold",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark red", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark red",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark orange", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark orange",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark yellow", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark yellow",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark green", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark green",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark blue", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark blue",
+                ChildBags = new[]
+                {
+                    new ChildBagRule {Bag = "dark violet", Number = 2}
+                }
+            },
+            new BagTypeRule
+            {
+                Colour = "dark violet",
+                ChildBags = new ChildBagRule[] {}
+            }
+        };
     }
     
     public class BagServiceTests
@@ -152,7 +209,26 @@ namespace AdventOfCode2020.Day7.Tests
                 
                 Assert.Throws<ArgumentException>(() => sut.TotalNumberOfBagsContainedIn(bagColour));
             }
-
+            
+            [Test]
+            [TestCase("shiny gold", 32)]
+            public void Should_ReturnNumberOfColoursThatCanEventuallyContainABag_When_BagColourExists(string bagColour, int expectedNumberFound)
+            {
+                var sut = new BagService(DemoValidRules.Rules.ToArray());
+                var actualNumberFound = sut.TotalNumberOfBagsContainedIn(bagColour);
+            
+                Assert.That(actualNumberFound == expectedNumberFound);
+            } 
+            
+            [Test]
+            [TestCase("shiny gold", 126)]
+            public void Should_ReturnNumberOfColoursThatCanEventuallyContainABag_When_BagColourExistsWithAlternativeRules(string bagColour, int expectedNumberFound)
+            {
+                var sut = new BagService(DemoValidRules.RulesForPart2Testing.ToArray());
+                var actualNumberFound = sut.TotalNumberOfBagsContainedIn(bagColour);
+            
+                Assert.That(actualNumberFound == expectedNumberFound);
+            } 
         }
     }
 }
