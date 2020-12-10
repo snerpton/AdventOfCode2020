@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace AdventOfCode2020.Day7
@@ -10,13 +12,13 @@ namespace AdventOfCode2020.Day7
         {
             Console.WriteLine("Welcome to Advent of Code 2020, Day 7!");
 
-            var aviationRegulationsFileAndPath =
-                Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath) +
-                "/Assets/Day7PuzzleInputAviationRegulations.txt";
+            var bagRules = FileParser.Parse();
+            var bagService = new BagService(bagRules.ToArray());
+            
+            var bagColour = "shiny gold";
+            var matchingBags = bagService.FindNumberOfBagsThatEventuallyContain(1, bagColour);
 
-            var aviationRegulationsFileContent = File.ReadLines(aviationRegulationsFileAndPath);
-
-            var a = 1;
+            Console.WriteLine($"Number of bags that eventually contain '{bagColour}': {matchingBags}");
 
         }
     }
