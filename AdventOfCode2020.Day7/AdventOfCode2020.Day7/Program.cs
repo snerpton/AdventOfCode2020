@@ -16,7 +16,7 @@ namespace AdventOfCode2020.Day7
             var bagService = new BagService(bagRules.ToArray());
             
             var bagColour = "shiny gold";
-            var matchingBags = bagService.FindNumberOfBagsThatEventuallyContain(1, bagColour);
+            var matchingBags = bagService.FindNumberOfBagsThatEventuallyContain(bagColour);
 
             Console.WriteLine($"Number of bags that eventually contain '{bagColour}': {matchingBags}");
 

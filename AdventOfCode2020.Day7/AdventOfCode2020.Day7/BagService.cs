@@ -16,11 +16,8 @@ namespace AdventOfCode2020.Day7
                 throw new ArgumentException();
         }
         
-        public int FindNumberOfBagsThatEventuallyContain(int number, string bag)
-        {
-            if (number <= 0)
-                throw new ArgumentOutOfRangeException(nameof(number));
-            
+        public int FindNumberOfBagsThatEventuallyContain(string bag)
+        {   
             if (string.IsNullOrEmpty(bag))
                 throw new ArgumentNullException(nameof(bag));
             

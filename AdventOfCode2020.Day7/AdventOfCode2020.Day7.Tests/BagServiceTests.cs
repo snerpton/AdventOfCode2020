@@ -104,16 +104,16 @@ namespace AdventOfCode2020.Day7.Tests
         
         public class FindNumberOfBagsThatEventuallyContain
         {
-            [Test]
-            [TestCase(-1)]
-            [TestCase(0)]
-            public void Should_ThrowException_When_InvalidNumber(int number)
-            {
-                var bagColour = "green";
-                var sut = new BagService(DemoValidRules.Rules.ToArray());
-                
-                Assert.Throws<ArgumentOutOfRangeException>(() =>sut.FindNumberOfBagsThatEventuallyContain(number, bagColour));
-            }
+            // [Test]
+            // [TestCase(-1)]
+            // [TestCase(0)]
+            // public void Should_ThrowException_When_InvalidNumber(int number)
+            // {
+            //     var bagColour = "green";
+            //     var sut = new BagService(DemoValidRules.Rules.ToArray());
+            //     
+            //     Assert.Throws<ArgumentOutOfRangeException>(() =>sut.FindNumberOfBagsThatEventuallyContain(number, bagColour));
+            // }
             
             [Test]
             [TestCase(null)]
@@ -121,7 +121,7 @@ namespace AdventOfCode2020.Day7.Tests
             {
                 var sut = new BagService(DemoValidRules.Rules.ToArray());
                 
-                Assert.Throws<ArgumentNullException>(() => sut.FindNumberOfBagsThatEventuallyContain(1, bagColour));
+                Assert.Throws<ArgumentNullException>(() => sut.FindNumberOfBagsThatEventuallyContain(bagColour));
             }
             
             [Test]
@@ -130,15 +130,15 @@ namespace AdventOfCode2020.Day7.Tests
             {
                 var sut = new BagService(DemoValidRules.Rules.ToArray());
                 
-                Assert.Throws<ArgumentException>(() => sut.FindNumberOfBagsThatEventuallyContain(1, bagColour));
+                Assert.Throws<ArgumentException>(() => sut.FindNumberOfBagsThatEventuallyContain(bagColour));
             }
             
             [Test]
-            [TestCase(1, "shiny gold", 4)]
-            public void Should_ReturnNumberOfColoursThatCanEventuallyContainABag_When_BagColourExists(int number, string bagColour, int expectedNumberFound)
+            [TestCase("shiny gold", 4)]
+            public void Should_ReturnNumberOfColoursThatCanEventuallyContainABag_When_BagColourExists(string bagColour, int expectedNumberFound)
             {
                 var sut = new BagService(DemoValidRules.Rules.ToArray());
-                var actualNumberFound = sut.FindNumberOfBagsThatEventuallyContain(1, bagColour);
+                var actualNumberFound = sut.FindNumberOfBagsThatEventuallyContain(bagColour);
             
                 Assert.That(actualNumberFound == expectedNumberFound);
             }         
