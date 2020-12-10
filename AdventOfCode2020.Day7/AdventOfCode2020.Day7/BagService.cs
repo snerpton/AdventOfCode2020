@@ -29,6 +29,11 @@ namespace AdventOfCode2020.Day7
             return rulesContainingBagNotAtRoot.Distinct().Count();
         }
 
+        public int TotalNumberOfBagsContainedIn(string bag)
+        {
+            throw new NotImplementedException();
+        }
+        
         private BagTypeRule[] FindRuleContainingBag(string bag)
         {
             var newBags = _bagRules.Where(rule => rule.ChildBags.Select(childBag => childBag.Bag).Contains(bag)).ToList();

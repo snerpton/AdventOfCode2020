@@ -104,17 +104,6 @@ namespace AdventOfCode2020.Day7.Tests
         
         public class FindNumberOfBagsThatEventuallyContain
         {
-            // [Test]
-            // [TestCase(-1)]
-            // [TestCase(0)]
-            // public void Should_ThrowException_When_InvalidNumber(int number)
-            // {
-            //     var bagColour = "green";
-            //     var sut = new BagService(DemoValidRules.Rules.ToArray());
-            //     
-            //     Assert.Throws<ArgumentOutOfRangeException>(() =>sut.FindNumberOfBagsThatEventuallyContain(number, bagColour));
-            // }
-            
             [Test]
             [TestCase(null)]
             public void Should_ThrowException_When_NullColourProvided(string bagColour)
@@ -142,6 +131,28 @@ namespace AdventOfCode2020.Day7.Tests
             
                 Assert.That(actualNumberFound == expectedNumberFound);
             }         
+        }
+
+        public class TotalNumberOfBagsContainedIn
+        {
+            [Test]
+            [TestCase(null)]
+            public void Should_ThrowException_When_NullColourProvided(string bagColour)
+            {
+                var sut = new BagService(DemoValidRules.Rules.ToArray());
+                
+                Assert.Throws<ArgumentNullException>(() => sut.TotalNumberOfBagsContainedIn(bagColour));
+            }
+            
+            [Test]
+            [TestCase("colourThatDoesntExist")]
+            public void Should_ThrowException_When_ColourNotFound(string bagColour)
+            {
+                var sut = new BagService(DemoValidRules.Rules.ToArray());
+                
+                Assert.Throws<ArgumentException>(() => sut.TotalNumberOfBagsContainedIn(bagColour));
+            }
+
         }
     }
 }
