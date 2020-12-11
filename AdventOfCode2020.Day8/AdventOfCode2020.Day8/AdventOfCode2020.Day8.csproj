@@ -5,4 +5,14 @@
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\Day8PuzzleInputInstructions.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="Assets\Day8PuzzleInputInstructions.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
