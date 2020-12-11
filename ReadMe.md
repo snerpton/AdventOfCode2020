@@ -235,3 +235,14 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 
 - So, in this example, the number of bag colors that can eventually contain at least one  shiny gold  bag is  4.
 - Requirement: How many bag colors can eventually contain at least one `shiny gold` bag?
+
+
+
+## Day 8
+
+- Operation (`acc`, `jmp`, or `nop`) and an argument (a signed number like `+4` or `-20`).
+- `acc` = accumulator that starts at zero. Argument increases / decreases by the given amount.
+- `jmp` jumps to the instruction given by the argument, i.e. `jmp 2` would jump to the the line following the next line, whilst `jmp -1` would go to the proceeding line.
+- `nop` is no operation, and the next line executes next.
+- We know we are in an infinite loop when any instruction is run for a second time.
+- Requirement: find the value in the accumulator before an instruction is run for a second time.
