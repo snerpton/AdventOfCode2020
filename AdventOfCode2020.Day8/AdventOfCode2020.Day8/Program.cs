@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using AdventOfCode2020.Day8.Models;
 
 namespace AdventOfCode2020.Day8
 {
@@ -21,6 +22,35 @@ namespace AdventOfCode2020.Day8
 
             Console.WriteLine($"Accumulator value: {bootConsole.Accumulator}");
             Console.WriteLine($"LineNumber value: {bootConsole.LineNumber}");
+            
+            // Part 2...
+            System.Console.WriteLine();
+            System.Console.WriteLine("Part 2...");
+            System.Console.WriteLine($"Number of instruction lines: {instructions.Count()}");
+            for(var index=0; index < instructions.ToArray().Count(); index++)
+            {
+                var updatedInstructions = instructions.ToArray();
+                updatedInstructions[index].Operation = UpdateInstruction(updatedInstructions[index].Operation);
+                var bootConsole2 = new BootConsole(updatedInstructions);
+                bootConsole2.Run();
+                if (bootConsole2.LineNumber == instructions.Count())
+                {
+                    Console.WriteLine($"Accumulator value: {bootConsole2.Accumulator}");
+                    Console.WriteLine($"LineNumber value: {bootConsole2.LineNumber}");
+                }
+            }
+        }
+
+        private static Operation UpdateInstruction(Operation origOperation)
+        {
+            Operation operation = origOperation switch
+            {
+                Operation.ACC => Operation.ACC,
+                Operation.JMP => Operation.NOP,
+                Operation.NOP => Operation.JMP
+
+            };
+            return operation;
         }
     }
 }
