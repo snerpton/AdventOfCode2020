@@ -42,5 +42,25 @@ namespace AdventOfCode2020.Day9.Tests
             Assert.That(actualYHeight, Is.EqualTo(expectedYHeight));
             Assert.That(actualZDepth, Is.EqualTo(expectedZDepth));
         }
+        
+        [Test]
+        [TestCase(new object[]{"."}, 0, 1,1,1)]
+        [TestCase(new object[]{"."}, 1, 3,3,3)]
+        [TestCase(new object[]{"."}, 2, 5,5,5)]
+        [TestCase(new object[]{"."}, 3, 7,7,7)]
+        public void Should_ReturnProblemGridWithCorrectDimensions_When_ValidGridPoints(object[] rowsObj, int numberOfIterations, int expectedXWidth, int expectedYHeight, int expectedZDepth)
+        {
+            var rows = rowsObj.Select(row => row as string);
+            var gridPoints = rows.SelectMany((row,yIndex) => FileParser.ParseXRow(row, yIndex, 0));
+
+            var sut = gridPoints.ToProblemGridFromGridPoints(numberOfIterations);
+            var actualXWidth = sut.GetLength(0);
+            var actualYHeight = sut.GetLength(1);
+            var actualZDepth = sut.GetLength(2);
+            
+            Assert.That(actualXWidth, Is.EqualTo(expectedXWidth));
+            Assert.That(actualYHeight, Is.EqualTo(expectedYHeight));
+            Assert.That(actualZDepth, Is.EqualTo(expectedZDepth));
+        }
     }
 }
