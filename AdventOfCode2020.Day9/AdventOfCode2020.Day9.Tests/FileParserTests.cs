@@ -7,6 +7,7 @@ namespace AdventOfCode2020.Day9.Tests
 {
     public class FileParserTests
     {
+        
         [Test]
         [TestCase(null)]
         public void Should_ThrowException_When_NullOrEmptyRow(string row)
@@ -31,7 +32,6 @@ namespace AdventOfCode2020.Day9.Tests
             
             Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.ParseXRow(row, y, z));
         }
-        
         
         [Test]
         [TestCase(".", new object []{State.Inactive})]
