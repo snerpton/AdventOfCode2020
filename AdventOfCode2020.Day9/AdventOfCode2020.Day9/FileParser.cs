@@ -31,12 +31,17 @@ namespace AdventOfCode2020.Day9
         private static GridPoint ParseToGridPoint(char c, int x, int y, int z) => 
             new GridPoint {State = ParseCharacterToState(c), X = x, Y = y, Z = z};
 
-        private static State ParseCharacterToState(char character) =>
-            character switch
+        private static State ParseCharacterToState(char character)
+        {
+            switch (character)
             {
-                '#' => State.Active,
-                '.' => State.Inactive,
-                _ => throw new ArgumentOutOfRangeException(nameof(character))
-            };
+                case '#':
+                    return State.Active;
+                case '.':
+                    return State.Inactive;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(character));
+            }
+        }
     }
 }

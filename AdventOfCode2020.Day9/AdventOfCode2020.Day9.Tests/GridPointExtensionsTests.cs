@@ -25,9 +25,9 @@ namespace AdventOfCode2020.Day9.Tests
         }
 
         [Test]
-        [TestCase(new object[]{"."}, 0,0,0)]
-        [TestCase(new object[]{"...", "..."}, 0,0,0)]
-        [TestCase(new object[]{"..", "..", ".."}, 0,0,0)]
+        [TestCase(new object[]{"."}, 1,1,1)]
+        [TestCase(new object[]{"...", "..."}, 3,2,1)]
+        [TestCase(new object[]{"..", "..", ".."}, 2,3,1)]
         public void Should_ReturnGridWithCorrectDimensions_When_ValidGridPoints(object[] rowsObj, int expectedXWidth, int expectedYHeight, int expectedZDepth)
         {
             var rows = rowsObj.Select(row => row as string);
