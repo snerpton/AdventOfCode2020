@@ -44,7 +44,7 @@ namespace AdventOfCode2020.Day9.Tests
             const int y = 0;
             const int z = 0;
             
-            var sut = FileParser.ParseXRow("...", y, z);
+            var sut = FileParser.ParseXRow(xRow, y, z);
             
             Assert.That(sut.Select(p => p.State).SequenceEqual<State>(expectedStates));
         }
@@ -53,7 +53,10 @@ namespace AdventOfCode2020.Day9.Tests
         [TestCase(".", 0, 0, 0, 0)]
         [TestCase("...", 1, 0, 1, 0)]
         [TestCase("...", 0, 1, 0, 1)]
+        [TestCase("...", -1, 0, -1, 0)]
+        [TestCase("...", 0, -1, 0, -1)]
         [TestCase(".#.", 0, 3, 0, 3)]
+        [TestCase(".#.", 0, -3, 0, -3)]
         public void Should_ParseRowYAndZ_When_ValidInput(string xRow, int y, int z, int expectedY, int expectedZ)
         {
             var sut = FileParser.ParseXRow("...", y, z);
