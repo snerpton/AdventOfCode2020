@@ -246,3 +246,21 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 - `nop` is no operation, and the next line executes next.
 - We know we are in an infinite loop when any instruction is run for a second time.
 - Requirement: find the value in the accumulator before an instruction is run for a second time.
+
+
+
+## Day 9
+
+- Conway Cubes
+- The pocket dimension contains an infinite 3-dimensional grid.
+- State at each point in grid either `active` or `inactive`.
+- Initial state almost all points start `inactive` (`.`). Small number start as `active` (`#`).
+- Energy source executes 6 cycles.
+- Each cube only considers its neighbours, i.e. point `x=1,y=2,z=3` would consider amongst others `x=2,y=2,z=2` and `x=0,y=2,z=3`.
+- During each cycle every cube itterates according to:
+  - If a cube is active and exactly 2 or 3 of its neighbors are also active, the cube remains active. Otherwise, the cube becomes inactive.
+  - If a cube is inactive but exactly 3 of its neighbors are active, the cube becomes active. Otherwise, the cube remains inactive.
+
+Observations:
+
+- Relevant space grows by 2 in x, y, and z direction each iteration.

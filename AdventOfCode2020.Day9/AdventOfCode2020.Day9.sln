@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day9", "AdventOfCode2020.Day9\AdventOfCode2020.Day9.csproj", "{74EC5AB5-4353-4935-AEED-5948E699A73D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E8D52045-5D2F-4F45-9362-16556A62A1E6}"
+ProjectSection(SolutionItems) = preProject
+	..\ReadMe.md = ..\ReadMe.md
+EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventOfCode2020.Day9.Tests", "AdventOfCode2020.Day9.Tests\AdventOfCode2020.Day9.Tests.csproj", "{9C8BB7C7-87E1-4C31-9281-93F05BF97AE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74EC5AB5-4353-4935-AEED-5948E699A73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74EC5AB5-4353-4935-AEED-5948E699A73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74EC5AB5-4353-4935-AEED-5948E699A73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74EC5AB5-4353-4935-AEED-5948E699A73D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C8BB7C7-87E1-4C31-9281-93F05BF97AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C8BB7C7-87E1-4C31-9281-93F05BF97AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C8BB7C7-87E1-4C31-9281-93F05BF97AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C8BB7C7-87E1-4C31-9281-93F05BF97AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
