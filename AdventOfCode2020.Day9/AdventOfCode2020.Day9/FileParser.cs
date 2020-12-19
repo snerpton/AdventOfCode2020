@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using AdventOfCode2020.Day9.Models;
 
 namespace AdventOfCode2020.Day9
@@ -8,10 +10,13 @@ namespace AdventOfCode2020.Day9
     public static class FileParser
     {
         private static readonly char[] _validStateCharacters = {'.', '#'};
+        private static readonly string FilePath =
+            Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().Location).LocalPath) +
+            "/Assets/Day9PuzzleInputInitialCubeState.txt";
 
         public static IEnumerable<string> Read()
         {
-            throw new NotImplementedException();
+            return File.ReadLines(FilePath);
         }
 
         public static IEnumerable<GridPoint> ParseXRow(string xRow, int y, int z)

@@ -9,4 +9,11 @@
       <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="Assets\Day9PuzzleInputInitialCubeState.txt" />
+      <Content Include="Assets\Day9PuzzleInputInitialCubeState.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+    </ItemGroup>
+
 </Project>
