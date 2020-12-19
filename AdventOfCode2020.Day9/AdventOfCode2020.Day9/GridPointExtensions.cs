@@ -50,8 +50,7 @@ namespace AdventOfCode2020.Day9
         {
             var initialGrid = gridPoints.ToInitialGridFromGridPoints();
 
-            // Assumption... each iteration adds 2 cells to each dimension
-            var cellAdditionPerDimensionPerIteration = 2;
+            const int cellAdditionPerDimensionPerIteration = 2; // Assumption... each iteration adds 2 cells to each dimension
             var initialXWidth = initialGrid.GetLength(0);
             var initialYHeight = initialGrid.GetLength(1);
             var initialZDepth = initialGrid.GetLength(2);
