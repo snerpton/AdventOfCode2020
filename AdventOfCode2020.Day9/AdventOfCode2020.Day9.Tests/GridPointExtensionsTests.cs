@@ -7,7 +7,7 @@ using NUnit.Framework;
 
 namespace AdventOfCode2020.Day9.Tests
 {
-    public class GridPointExtensionsTests
+    public class GridPointExtensions_ToInitialGridFromGridPointsTests
     {
         [Test]
         public void Should_ThrowException_When_NullGridPoints()
@@ -24,7 +24,7 @@ namespace AdventOfCode2020.Day9.Tests
 
             Assert.Throws<ArgumentOutOfRangeException>(() => gridPoints.ToInitialGridFromGridPoints());
         }
-
+        
         [Test]
         [TestCase(new object[]{"."}, 1,1,1)]
         [TestCase(new object[]{"...", "..."}, 3,2,1)]
@@ -42,6 +42,41 @@ namespace AdventOfCode2020.Day9.Tests
             Assert.That(actualXWidth, Is.EqualTo(expectedXWidth));
             Assert.That(actualYHeight, Is.EqualTo(expectedYHeight));
             Assert.That(actualZDepth, Is.EqualTo(expectedZDepth));
+        }
+    }
+
+    public class GridPointExtensions_ToProblemGridFromGridPointsTests
+    {
+        [Test]
+        public void Should_ThrowException_When_NullGridPoints()
+        {
+            IEnumerable<GridPoint> gridPoints = null;
+            const int numberOgIterations = 0;
+
+            Assert.Throws<ArgumentNullException>(() => gridPoints.ToProblemGridFromGridPoints(numberOgIterations));
+        }
+        
+        [Test]
+        public void Should_ThrowException_When_EmptyGridPoints()
+        {
+            var gridPoints = Enumerable.Empty<GridPoint>();
+            const int numberOgIterations = 0;
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => gridPoints.ToProblemGridFromGridPoints(numberOgIterations));
+        }
+
+        
+        [Test]
+        [TestCase(-1)]
+        [TestCase(-2)]
+        [TestCase(-10)]
+        public void Should_ThrowException_When_NegativeNumberOfIterations(int numberOfIterations)
+        {
+            var rows = new []{"."};
+            var sut = rows.SelectMany((row,yIndex) => FileParser.ParseXRow(row, yIndex, 0));
+
+            Assert.Throws<ArgumentOutOfRangeException>(() =>
+                sut.ToProblemGridFromGridPoints(numberOfIterations));
         }
         
         [Test]

@@ -32,22 +32,15 @@ namespace AdventOfCode2020.Day9
             foreach (var gridPoint in gridPoints)
                 gridPointRtn[gridPoint.X, gridPoint.Y, gridPoint.Z] = gridPoint.State;
 
-            // Sanity check...
-            if (xWidth != gridPointRtn.GetLength(0))
-                throw new Exception("Error creating initial grid: width");
-
-            if (yWidth != gridPointRtn.GetLength(1))
-                throw new Exception("Error creating initial grid: height");
-
-            if (zWidth != gridPointRtn.GetLength(2))
-                throw new Exception("Error creating initial grid: depth");
-
             return gridPointRtn;
         }
 
         public static State[,,] ToProblemGridFromGridPoints(this IEnumerable<GridPoint> gridPoints,
             int numberOfIterations)
         {
+            if (numberOfIterations < 0)
+                throw new ArgumentOutOfRangeException(nameof(numberOfIterations));
+            
             var initialGrid = gridPoints.ToInitialGridFromGridPoints();
 
             const int cellAdditionPerDimensionPerIteration = 2; // Assumption... each iteration adds 2 cells to each dimension
