@@ -32,6 +32,30 @@ namespace AdventOfCode2020.Day9.Tests
             
             Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.ParseXRow(row, y, z));
         }
+
+        [Test]
+        [TestCase(-1)]
+        [TestCase(-2)]
+        [TestCase(-10)]
+        public void Should_ThrowException_When_NegativeYPosition(int y)
+        {
+            const string row = ".";
+            const int z = 0; 
+            
+            Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.ParseXRow(row, y, z));  
+        } 
+        
+        [Test]
+        [TestCase(-1)]
+        [TestCase(-2)]
+        [TestCase(-10)]
+        public void Should_ThrowException_When_NegativeZPosition(int z)
+        {
+            const string row = ".";
+            const int y = 0; 
+            
+            Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.ParseXRow(row, y, z));  
+        } 
         
         [Test]
         [TestCase(".", new object []{State.Inactive})]
@@ -53,10 +77,7 @@ namespace AdventOfCode2020.Day9.Tests
         [TestCase(".", 0, 0, 0, 0)]
         [TestCase("...", 1, 0, 1, 0)]
         [TestCase("...", 0, 1, 0, 1)]
-        [TestCase("...", -1, 0, -1, 0)]
-        [TestCase("...", 0, -1, 0, -1)]
         [TestCase(".#.", 0, 3, 0, 3)]
-        [TestCase(".#.", 0, -3, 0, -3)]
         public void Should_ParseRowYAndZ_When_ValidInput(string xRow, int y, int z, int expectedY, int expectedZ)
         {
             var sut = FileParser.ParseXRow("...", y, z);
