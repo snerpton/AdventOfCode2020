@@ -10,7 +10,7 @@ namespace AdventOfCode2020.Day9
             Console.WriteLine("Welcome to Day 9...");
 
             var fileLines = FileParser.Read();
-            var gridPoints = fileLines.SelectMany((line, yIndex) => FileParser.ParseXRow(line, yIndex, 0));
+            var gridPoints = fileLines.SelectMany((line, yIndex) => FileParser.ParseXRow(line, yIndex, 0, 0));
 
             const int numberOfIterations = 6;
             var initialProblemGrid = gridPoints.ToProblemGridFromGridPoints(numberOfIterations);

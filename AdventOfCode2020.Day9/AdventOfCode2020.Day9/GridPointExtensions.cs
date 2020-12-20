@@ -7,7 +7,7 @@ namespace AdventOfCode2020.Day9
 {
     public static class GridPointExtensions
     {
-        public static State[,,] ToInitialGridFromGridPoints(this IEnumerable<GridPoint> gridPoints)
+        public static State[,,,] ToInitialGridFromGridPoints(this IEnumerable<GridPoint> gridPoints)
         {
             if (gridPoints == null)
                 throw new ArgumentNullException(nameof(gridPoints));
@@ -27,15 +27,15 @@ namespace AdventOfCode2020.Day9
             var maxZIndex = gridPoints.Max(gp => gp.Z);
             var zWidth = maxZIndex - minZIndex + 1;
 
-            var gridPointRtn = new State[xWidth, yWidth, zWidth];
+            var gridPointRtn = new State[xWidth, yWidth, zWidth, zWidth];
 
             foreach (var gridPoint in gridPoints)
-                gridPointRtn[gridPoint.X, gridPoint.Y, gridPoint.Z] = gridPoint.State;
+                gridPointRtn[gridPoint.X, gridPoint.Y, gridPoint.Z, gridPoint.W] = gridPoint.State;
 
             return gridPointRtn;
         }
 
-        public static State[,,] ToProblemGridFromGridPoints(this IEnumerable<GridPoint> gridPoints,
+        public static State[,,,] ToProblemGridFromGridPoints(this IEnumerable<GridPoint> gridPoints,
             int numberOfIterations)
         {
             if (numberOfIterations < 0)
@@ -47,11 +47,13 @@ namespace AdventOfCode2020.Day9
             var initialXWidth = initialGrid.GetLength(0);
             var initialYHeight = initialGrid.GetLength(1);
             var initialZDepth = initialGrid.GetLength(2);
+            var initialWDimension = initialGrid.GetLength(3);
 
             var gridPointRtn = new State[
                 initialXWidth + cellAdditionPerDimensionPerIteration * numberOfIterations,
                 initialYHeight + cellAdditionPerDimensionPerIteration * numberOfIterations,
-                initialZDepth + cellAdditionPerDimensionPerIteration * numberOfIterations];
+                initialZDepth + cellAdditionPerDimensionPerIteration * numberOfIterations,
+                initialWDimension + cellAdditionPerDimensionPerIteration * numberOfIterations];
 
             for (var x = 0; x < gridPointRtn.GetLength(0); x++)
             {
@@ -59,20 +61,25 @@ namespace AdventOfCode2020.Day9
                 {
                     for (var z = 0; z < gridPointRtn.GetLength(2); z++)
                     {
-                        var offset = cellAdditionPerDimensionPerIteration * numberOfIterations / 2; // divide by two as cells added to both sides
+                        for (var w = 0; w < gridPointRtn.GetLongLength(3); w++)
+                        {
+                            var offset = cellAdditionPerDimensionPerIteration * numberOfIterations / 2; // divide by two as cells added to both sides
                         
-                        if (x >= offset
-                            && y >= offset
-                            && z >= offset
-                            && x < initialXWidth + offset
-                            && y < initialYHeight + offset
-                            && z < initialZDepth + offset)
-                        {
-                            gridPointRtn[x, y, z] = initialGrid[x-offset, y-offset, z-offset];
-                        }
-                        else
-                        {
-                            gridPointRtn[x, y, z] = State.Inactive;
+                            if (x >= offset
+                                && y >= offset
+                                && z >= offset
+                                && w >= offset
+                                && x < initialXWidth + offset
+                                && y < initialYHeight + offset
+                                && z < initialZDepth + offset
+                                && w < initialWDimension + offset)
+                            {
+                                gridPointRtn[x, y, z, w] = initialGrid[x - offset, y - offset, z - offset, w - offset];
+                            }
+                            else
+                            {
+                                gridPointRtn[x, y, z, w] = State.Inactive;
+                            }
                         }
                     }
                 }

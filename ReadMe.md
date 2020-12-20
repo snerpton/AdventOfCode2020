@@ -264,3 +264,9 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 Observations:
 
 - Relevant space grows by 2 in x, y, and z direction each iteration.
+
+### Part 2
+
+- Now 4 spatial dimensions: `x`, `y`, `z`, and `w`.
+- Same rules of interaction, but interacts with nearest neighbours over 4 rather than 3 dimensions.
+- Example in part 1 now produces 848 cubes left in active state after 6 iterations.

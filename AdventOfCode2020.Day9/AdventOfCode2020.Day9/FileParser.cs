@@ -19,7 +19,7 @@ namespace AdventOfCode2020.Day9
             return File.ReadLines(FilePath);
         }
 
-        public static IEnumerable<GridPoint> ParseXRow(string xRow, int y, int z)
+        public static IEnumerable<GridPoint> ParseXRow(string xRow, int y, int z, int w)
         {
             if (xRow == null)
                 throw new ArgumentNullException(nameof(xRow));
@@ -36,11 +36,14 @@ namespace AdventOfCode2020.Day9
             if (z < 0)
                 throw new ArgumentOutOfRangeException(nameof(y));
             
-            return xRow.Select((c, index) => ParseToGridPoint(c, index, y, z));
+            if (w < 0)
+                throw new ArgumentOutOfRangeException(nameof(w));
+            
+            return xRow.Select((c, index) => ParseToGridPoint(c, index, y, z, w));
         }
 
-        private static GridPoint ParseToGridPoint(char c, int x, int y, int z) => 
-            new GridPoint {State = ParseCharacterToState(c), X = x, Y = y, Z = z};
+        private static GridPoint ParseToGridPoint(char c, int x, int y, int z, int w) => 
+            new GridPoint {State = ParseCharacterToState(c), X = x, Y = y, Z = z, W = w};
 
         private static State ParseCharacterToState(char character)
         {
