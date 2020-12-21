@@ -18,7 +18,7 @@ namespace AdventOfCode2020.Day9
             return File.ReadLines(filePathAndName);
         }
 
-        public static IEnumerable<int> Parse(IEnumerable<string> inputLines)
+        public static IEnumerable<long> Parse(IEnumerable<string> inputLines)
         {
             if (inputLines == null) 
                 throw new ArgumentNullException(nameof(inputLines));
@@ -26,7 +26,7 @@ namespace AdventOfCode2020.Day9
             if (inputLines.Any() == false)
                 throw new ArgumentOutOfRangeException(nameof(inputLines));
 
-            return inputLines.Select(line => int.Parse(line));
+            return inputLines.Select(line => long.Parse(line));
         }
     }
 }
