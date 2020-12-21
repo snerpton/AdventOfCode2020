@@ -248,6 +248,14 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 - Requirement: find the value in the accumulator before an instruction is run for a second time.
 
 
+## Day 9
+
+- Data encrypted with eXchange-Masking Addition System (XMAS)
+- XMAS startes with a 25 number preamble
+- After that each number should be the sum of any 2 numbers in the immediate 25 numbers
+- Requirement: what is the first number that doesn't follow this rule in the supplied data?
+
+
 
 ## Day 17
 
