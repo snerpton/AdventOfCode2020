@@ -249,7 +249,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 
 
 
-## Day 9
+## Day 17
 
 - Conway Cubes
 - The pocket dimension contains an infinite 3-dimensional grid.

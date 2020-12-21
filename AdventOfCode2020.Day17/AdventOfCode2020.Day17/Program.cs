@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace AdventOfCode2020.Day9
+namespace AdventOfCode2020.Day17
 {
     class Program
     {

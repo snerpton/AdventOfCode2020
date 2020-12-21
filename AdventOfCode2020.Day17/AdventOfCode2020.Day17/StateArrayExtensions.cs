@@ -1,7 +1,7 @@
 using System;
-using AdventOfCode2020.Day9.Models;
+using AdventOfCode2020.Day17.Models;
 
-namespace AdventOfCode2020.Day9
+namespace AdventOfCode2020.Day17
 {
     public static class StateArrayExtensions
     {

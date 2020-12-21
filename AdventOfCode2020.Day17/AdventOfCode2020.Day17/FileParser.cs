@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using AdventOfCode2020.Day9.Models;
+using AdventOfCode2020.Day17.Models;
 
-namespace AdventOfCode2020.Day9
+namespace AdventOfCode2020.Day17
 {
     public static class FileParser
     {

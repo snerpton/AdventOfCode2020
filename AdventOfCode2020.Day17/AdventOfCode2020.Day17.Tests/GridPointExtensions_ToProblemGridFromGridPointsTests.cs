@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using AdventOfCode2020.Day9.Models;
+using AdventOfCode2020.Day17.Models;
 using NUnit.Framework;
 
-namespace AdventOfCode2020.Day9.Tests
+namespace AdventOfCode2020.Day17.Tests
 {
     public class GridPointExtensions_ToProblemGridFromGridPointsTests
     {
