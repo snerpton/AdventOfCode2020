@@ -18,5 +18,13 @@ namespace AdventOfCode2020.Day9
 
             _inputLines = inputLines;
         }
+
+        public bool Validate(int preambleCount, out long firstInvalidNumber)
+        {
+            if (preambleCount <= 0)
+                throw new ArgumentOutOfRangeException(nameof(firstInvalidNumber));
+            
+            throw new NotImplementedException();
+        }
     }
 }
