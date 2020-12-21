@@ -17,5 +17,16 @@ namespace AdventOfCode2020.Day9
 
             return File.ReadLines(filePathAndName);
         }
+
+        public static IEnumerable<int> Parse(IEnumerable<string> inputLines)
+        {
+            if (inputLines == null) 
+                throw new ArgumentNullException(nameof(inputLines));
+            
+            if (inputLines.Any() == false)
+                throw new ArgumentOutOfRangeException(nameof(inputLines));
+            
+            throw new NotImplementedException();
+        }
     }
 }

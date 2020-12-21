@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 
 namespace AdventOfCode2020.Day9.Tests
@@ -26,9 +28,25 @@ namespace AdventOfCode2020.Day9.Tests
         [Test]
         public void Should_ThrowException_When_CantReadInputFile()
         {
-            string filePathAndName = "/dummy/path/that/does/not/exist.txt";
+            var filePathAndName = "/dummy/path/that/does/not/exist.txt";
 
             Assert.Throws<DirectoryNotFoundException>(() => FileParser.Read(filePathAndName));
+        }
+
+        [Test]
+        public void Should_ThrowException_When_NullInputLines()
+        {
+            IEnumerable<string> inputLines = null;
+
+            Assert.Throws<ArgumentNullException>(() => FileParser.Parse(inputLines));
+        }
+        
+        [Test]
+        public void Should_ThrowException_When_EmptyInputLines()
+        {
+            var inputLines = Enumerable.Empty<string>();
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.Parse(inputLines));
         }
     }
 }
