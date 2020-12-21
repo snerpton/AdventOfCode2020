@@ -48,5 +48,16 @@ namespace AdventOfCode2020.Day9.Tests
 
             Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.Parse(inputLines));
         }
+
+        [Test]
+        public void Should_ParseInputLines_When_ValidInput()
+        {
+            var inputLines = new[] {"1", "2", "3", "12"};
+            var expectedLines = new [] {1, 2, 3, 12};
+
+            var actualLines = FileParser.Parse(inputLines);
+            
+            Assert.That(actualLines, Is.EqualTo(expectedLines));
+        }
     }
 }

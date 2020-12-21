@@ -25,8 +25,8 @@ namespace AdventOfCode2020.Day9
             
             if (inputLines.Any() == false)
                 throw new ArgumentOutOfRangeException(nameof(inputLines));
-            
-            throw new NotImplementedException();
+
+            return inputLines.Select(line => int.Parse(line));
         }
     }
 }
