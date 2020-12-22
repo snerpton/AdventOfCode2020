@@ -26,31 +26,34 @@ namespace AdventOfCode2020.Day9
 
             firstInvalidNumber = long.MinValue;
 
-            var currentPreambleIndexMin = 0;
+            var preambleIndexMin = 0;
           
-            foreach (var input in _inputLines.GetRange(preambleCount, _inputLines.Count - preambleCount))
+            for (var index = preambleCount; index < _inputLines.Count; index++)
             {
-                var currentPreamble = CurrentPreamble(currentPreambleIndexMin, preambleCount);
-
-                if (CanFindSumInPreamble(input, currentPreamble) == false)
+                var preamble = CurrentPreamble(preambleIndexMin, preambleCount);
+                var target = _inputLines[index];
+                
+                if (CanFindSumInPreamble(target, preamble) == false)
                 {
-                    firstInvalidNumber = input;
+                    firstInvalidNumber = target;
                     return false;
                 }
                 
-                currentPreambleIndexMin++;
+                preambleIndexMin = preambleIndexMin + 1;
             }
             
             return true;
         }
 
-        private static bool CanFindSumInPreamble(long currentNumber, List<long> preamble)
+        private static bool CanFindSumInPreamble(long target, List<long> preamble)
         {
-            for (var i = 0; i < preamble.Count - 1; i++)
+            for (var i = 0; i < preamble.Count; i++)
             {
-                for (var j = i + 1; j < preamble.Count - 1; j++)
+                for (var j = i + 1; j < preamble.Count; j++)
                 {
-                    if (preamble[i] + preamble[j] == currentNumber)
+                    var num1 = preamble[i];
+                    var num2 = preamble[j];
+                    if (/*num1 != num2 &&*/ num1 + num2 == target)
                         return true;
                 }
             }

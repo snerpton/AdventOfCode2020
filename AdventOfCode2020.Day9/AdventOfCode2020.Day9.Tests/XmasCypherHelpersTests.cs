@@ -68,10 +68,10 @@ namespace AdventOfCode2020.Day9.Tests
             var preamble = 5;
             var sut = new XmasCypherHelpers(inputLines);
 
-            sut.Validate(preamble, out var firstInvalidNumber);
+            sut.Validate(preamble, out var actualFirstInvalidNumber);
             var expectedFirstInvalidNumber = 127;
 
-            Assert.That(firstInvalidNumber == expectedFirstInvalidNumber);
+            Assert.That(actualFirstInvalidNumber == expectedFirstInvalidNumber);
         }
     }
 }

@@ -15,8 +15,15 @@ namespace AdventOfCode2020.Day9
             Console.WriteLine("Welcome to Day 9...");
 
             var fileLines = FileParser.Read(_inputPathAndFile);
-            var inputCodeLines = FileParser.Parse(fileLines).Reverse();
+            var inputCodeLines = FileParser.Parse(fileLines);
   
+            var xmasCypherHelper = new XmasCypherHelpers(inputCodeLines);
+
+            var preambleCount = 25;
+            if (xmasCypherHelper.Validate(preambleCount, out var firstInvalidNumber) == true)
+                Console.WriteLine("Something went wrong as there is valid input!");
+
+            Console.WriteLine($"First invalid number is: {firstInvalidNumber}");
         }
     }
 }
