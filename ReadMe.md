@@ -265,6 +265,7 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 - Requirement 1: target `joltage` is `joltage` of highest rated adapter plus `3 jolts`
 - Requirement 2: chain adapters together using each adapter only once such that the increase in rating is plus `1-3 jolts` each adapter.
 - See worked example for detailed example.
+  - Always take lowest available adapter.
 - Longer example also provided.
 - Requirement 3: count number of `1`, `2`, and `3` `jolt` leaps. What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
 
