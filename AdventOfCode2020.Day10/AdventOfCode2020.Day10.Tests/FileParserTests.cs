@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 
 namespace AdventOfCode2020.Day10.Tests
@@ -22,6 +23,16 @@ namespace AdventOfCode2020.Day10.Tests
         
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => FileParser.Read(filePathAndName));
+        }
+
+        [Test]
+        [TestCase(new object[]{"1", "b", "3"})]
+        [TestCase(new object[]{"1", " ", "3"})]
+        public void Should_ThrowException_When_UnableToParseStringIntoInt(object[] adapterJoltagesAsObj)
+        {
+            var adapterJoltages = adapterJoltagesAsObj.Select(x => x.ToString());
+            
+            Assert.Throws<FormatException>(() => FileParser.Parse(adapterJoltages).ToList());
         }
     }
 }
