@@ -9,7 +9,7 @@ namespace AdventOfCode2020.Day10
         private readonly IEnumerable<int> _adapters;
         private readonly int _minStepJoltDifference = 1;
         private readonly int _maxStepJoltDifference = 3;
-        private readonly int _startingJoltage = 0;
+        private readonly int _chargerJoltage = 0;
 
         public JoltageAdapterService(IEnumerable<int> adapters)
         {
@@ -26,15 +26,27 @@ namespace AdventOfCode2020.Day10
 
         public int NumberWith1JoltDifference()
         {
-            throw new NotImplementedException();
+            var joltStep = 1;
+            var adapters = AdaptersUsedList().ToList();
+            var numberWith1JoltDifference = 0;
+
+            for (var index = 1; index < adapters.Count; index++)
+            {
+                if (adapters.ElementAt(index) - adapters.ElementAt(index - 1) == joltStep)
+                    numberWith1JoltDifference++;
+            }
+
+            return numberWith1JoltDifference;
         }
 
         public IEnumerable<int> AdaptersUsedList()
         {
             var adapters = _adapters.ToList();
             var orderedAdapters = new List<int>();
-            var currentJoltage = _startingJoltage;
+            var currentJoltage = _chargerJoltage;
             
+            // Add charger's adapter
+            orderedAdapters.Add(_chargerJoltage);
             
             while (adapters.Any())
             {
@@ -43,6 +55,9 @@ namespace AdventOfCode2020.Day10
                 orderedAdapters.Add(nextAdapter);
                 currentJoltage = nextAdapter;
             }
+
+            // Add device's built-in adapter 
+            //orderedAdapters.Add(CalculateDeviceJoltageRating());
 
             return orderedAdapters;
         }
@@ -58,7 +73,7 @@ namespace AdventOfCode2020.Day10
                     return currentJoltage + joltageStep;
             }
 
-            throw new Exception();
+            throw new Exception("Unable to find a suitable adapter");
         }
     }
 }
