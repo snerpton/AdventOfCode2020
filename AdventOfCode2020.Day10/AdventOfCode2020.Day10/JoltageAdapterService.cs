@@ -20,5 +20,10 @@ namespace AdventOfCode2020.Day10
         }
 
         public int CalculateDeviceJoltageRating() => _adapters.Max() + 3;
+
+        public int NumberWith1JoltDifference()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
