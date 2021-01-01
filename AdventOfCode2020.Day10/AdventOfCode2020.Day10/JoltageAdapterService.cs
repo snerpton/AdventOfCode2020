@@ -24,9 +24,8 @@ namespace AdventOfCode2020.Day10
 
         public int CalculateDeviceJoltageRating() => _adapters.Max() + 3;
 
-        public int NumberWith1JoltDifference()
+        public int NumberWithJoltDifferenceOf(int joltStep)
         {
-            var joltStep = 1;
             var adapters = AdaptersUsedList().ToList();
             var numberWith1JoltDifference = 0;
 
@@ -57,7 +56,7 @@ namespace AdventOfCode2020.Day10
             }
 
             // Add device's built-in adapter 
-            //orderedAdapters.Add(CalculateDeviceJoltageRating());
+            orderedAdapters.Add(CalculateDeviceJoltageRating());
 
             return orderedAdapters;
         }
