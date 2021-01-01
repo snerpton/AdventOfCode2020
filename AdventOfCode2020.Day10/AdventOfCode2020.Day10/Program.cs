@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 
 namespace AdventOfCode2020.Day10
 {
@@ -6,7 +8,13 @@ namespace AdventOfCode2020.Day10
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Welcome to Advent of Code Day 10!");
+
+            var filePathAndName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) +
+                                  "/Assets/Day10PuzzleInputOutputJoltage.txt";
+
+            var fileContentOfAdapterJoltages = FileParser.Read(filePathAndName);
+
         }
     }
 }
