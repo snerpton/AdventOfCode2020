@@ -44,7 +44,25 @@ namespace AdventOfCode2020.Day9
             
             return true;
         }
+        
+        public List<long> FindContiguousSetAddingUpTo(long target)
+        {
+            if (target <= 0)
+                throw new ArgumentOutOfRangeException(nameof(target));
 
+            for (var i = 0; i < _inputLines.Count; i++)
+            {
+                
+            }
+            
+            
+            
+            throw new NotImplementedException();
+        }
+        
+        
+        
+        
         private static bool CanFindSumInPreamble(long target, List<long> preamble)
         {
             for (var i = 0; i < preamble.Count; i++)

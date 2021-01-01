@@ -257,6 +257,19 @@ More information about Advent of Code can be found at https://adventofcode.com/2
 
 
 
+## Day 10
+
+- Adapter can take an input `1`, `2`, or `3` jolts lower than its rating and still produce its rated output joltage.
+- Device has built in joltage adapter that is rated for `3 jolts` higher than the highest-rated in bag e.g. if adapter in bag are rated for `3`, `9`, and `6`, your device's built-in adapter would be rated for `12 jolts`.
+- Local charging outlet has an effective rating of `0 jolts`.
+- Requirement 1: target `joltage` is `joltage` of highest rated adapter plus `3 jolts`
+- Requirement 2: chain adapters together using each adapter only once such that the increase in rating is plus `1-3 jolts` each adapter.
+- See worked example for detailed example.
+- Longer example also provided.
+- Requirement 3: count number of `1`, `2`, and `3` `jolt` leaps. What is the number of 1-jolt differences multiplied by the number of 3-jolt differences?
+
+
+
 ## Day 17
 
 - Conway Cubes

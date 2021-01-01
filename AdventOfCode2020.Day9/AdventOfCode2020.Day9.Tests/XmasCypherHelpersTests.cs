@@ -73,5 +73,34 @@ namespace AdventOfCode2020.Day9.Tests
 
             Assert.That(actualFirstInvalidNumber == expectedFirstInvalidNumber);
         }
+        
+        [Test]
+        [TestCase(0)]
+        [TestCase(-1)]
+        [TestCase(-10)]
+        public void Should_ThrowException_When_ZeroOrNegativeTarget(long target)
+        {
+            var inputLines = new long[] {1, 2, 3};
+            var preamble = 1;
+            var sut = new XmasCypherHelpers(inputLines);
+
+            Assert.Throws<ArgumentOutOfRangeException>(() => sut.FindContiguousSetAddingUpTo(target));
+        }
+        
+        [Test]
+        public void Should_FindContiguousSetAddingUpTo_When_ValidInput()
+        {
+            var inputLines = new long[]
+            {
+                35, 20, 15, 25, 47, 40, 62, 55, 65, 95, 102, 117, 150, 182, 127, 219, 299, 277, 309, 576
+            };
+            const long target = 127;
+            var expectedSet = new long[] {15, 25, 47, 40};
+            
+            var sut = new XmasCypherHelpers(inputLines);
+            
+
+            Assert.That(sut.FindContiguousSetAddingUpTo(target), Is.EqualTo(expectedSet));
+        }
     }
 }
